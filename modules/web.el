@@ -20,9 +20,9 @@
       (if (string-match (car my-pair) buffer-file-name)
           (funcall (cdr my-pair)))))
 (defun my-wm-hook () (progn
-            (setq web-mode-markup-indent-offset 2)
-            (setq web-mode-css-indent-offset 2)
-            (setq web-mode-code-indent-offset 2)
+            (setq web-mode-markup-indent-offset 'tab-width)
+            (setq web-mode-css-indent-offset 'tab-width)
+            (setq web-mode-code-indent-offset 'tab-width)
             (set (make-local-variable 'company-backends) '(company-tern company-web-html company-css))
             (enable-minor-mode '("\\.jsx?\\'" . prettier-js-mode))
             (enable-minor-mode '("\\.tsx?\\'" . prettier-js-mode))

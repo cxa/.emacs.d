@@ -11,7 +11,7 @@
 (load "markdown")
 (load "ocaml")
 (load "reason")
-(load "js")
+(load "web")
 
 (when (equal system-type 'darwin)
   (load "swift")
