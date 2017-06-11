@@ -37,3 +37,6 @@
 
 ;; Docker
 (depends-on "dockerfile-mode" :git "https://github.com/spotify/dockerfile-mode.git")
+
+;; Yaml
+(depends-on "yaml-mode" :git "https://github.com/yoshiki/yaml-mode.git")

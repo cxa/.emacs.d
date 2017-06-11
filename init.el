@@ -13,6 +13,7 @@
 (load "reason")
 (load "web")
 (load "docker")
+(load "yaml")
 
 (when (equal system-type 'darwin)
   (load "swift")
