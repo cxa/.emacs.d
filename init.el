@@ -12,6 +12,7 @@
 (load "ocaml")
 (load "reason")
 (load "web")
+(load "docker")
 
 (when (equal system-type 'darwin)
   (load "swift")

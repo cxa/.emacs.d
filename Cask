@@ -34,3 +34,6 @@
 (depends-on "company-web")
 (depends-on "company-tern")
 (depends-on "prettier-js")
+
+;; Docker
+(depends-on "dockerfile-mode" :git "https://github.com/spotify/dockerfile-mode.git")
