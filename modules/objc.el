@@ -26,4 +26,6 @@
    company-capf
    company-c-headers))
 
+(add-to-list 'auto-mode-alist '("\\.x\\'" . objc-mode))
+(add-to-list 'auto-mode-alist '("\\.xm\\'" . objc-mode))
 (add-to-list 'auto-mode-alist '("\\.mm\\'" . objc-mode))
