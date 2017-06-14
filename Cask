@@ -16,6 +16,9 @@
 (depends-on "markdown-mode")
 (depends-on "markdownfmt")
 
+;; OCaml
+(depends-on "oasis-mode" :git "https://github.com/cxa/oasis-mode.git")
+
 ;; Reason
 (depends-on "reason-mode" :git "https://github.com/arichiardi/reason-mode.git")
 
