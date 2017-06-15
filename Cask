@@ -11,7 +11,7 @@
 (depends-on "dash")
 (depends-on "dash-functional")
 (depends-on "request")
-(depends-on "helm")
+(depends-on "smex")
 
 ;; Markdown
 (depends-on "markdown-mode")
