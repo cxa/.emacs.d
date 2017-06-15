@@ -1,4 +1,5 @@
 (require 'oasis-mode)
+(add-to-list 'auto-mode-alist '("/jbuild$" . lisp-mode))
 
 (let ((opam-share (ignore-errors (car (process-lines "opam" "config" "var" "share")))))
   (when (and opam-share (file-directory-p opam-share))
