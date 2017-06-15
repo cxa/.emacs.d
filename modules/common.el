@@ -10,6 +10,17 @@
 (setq recentf-max-menu-items 25)
 (global-set-key "\C-x\ \C-r" 'recentf-open-files)
 
+(require 'helm-config)
+(setq helm-ff-auto-update-initial-value nil)
+(global-set-key (kbd "M-x") 'helm-M-x)
+(setq helm-M-x-fuzzy-match t)
+(global-set-key (kbd "M-y") 'helm-show-kill-ring)
+(global-set-key (kbd "C-x b") 'helm-mini)
+(setq helm-buffers-fuzzy-matching t
+      helm-recentf-fuzzy-match    t)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+(helm-mode 1)
+
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
 (defun my-indent-or-complete ()
