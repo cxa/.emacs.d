@@ -1,7 +1,9 @@
 ;
 (package-initialize)
 
-(require 'cask "/usr/local/share/emacs/site-lisp/cask/cask.el")
+(if (not (require 'cask "/usr/local/share/emacs/site-lisp/cask/cask.el" t))
+  (require 'cask "~/.cask/cask.el"))
+
 (cask-initialize)
 
 (add-to-list 'load-path "~/.emacs.d/modules")
