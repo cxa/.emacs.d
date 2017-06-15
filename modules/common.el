@@ -26,3 +26,5 @@
       (indent-according-to-mode)))
 
 (global-set-key "\t" 'my-indent-or-complete)
+(define-key company-active-map (kbd "C-n") 'company-select-next-or-abort)
+(define-key company-active-map (kbd "C-p") 'company-select-previous-or-abort)
