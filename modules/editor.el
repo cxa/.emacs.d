@@ -31,7 +31,12 @@
 (and (fboundp 'tooltip-mode)    (fboundp 'x-show-tip) (tooltip-mode -1))
 
 ;; Editor Font
-(defconst FONT "Nitti Pro-14")
+(when (eq window-system 'x)
+  (defconst FONT "Nitti Pro SemiLight Slim-12"))
+
+(when (memq window-system '(mac ns))
+  (defconst FONT "Nitti Pro-14"))
+  
 (set-face-attribute 'default nil :font FONT)
 (set-frame-font FONT nil t)
 
@@ -40,11 +45,11 @@
   (interactive)
   (if window-system
       (progn
-	(defconst width 120)
-	(add-to-list 'default-frame-alist (cons 'top 0))
-	(add-to-list 'default-frame-alist (cons 'left (/ (- (x-display-pixel-width) (* (frame-char-width) width)) 2)))
-	(add-to-list 'default-frame-alist (cons 'width width))
-	(add-to-list 'default-frame-alist (cons 'height (/ (x-display-pixel-height) (frame-char-height)))))))
+        (defconst width 120)
+        (add-to-list 'default-frame-alist (cons 'top 0))
+        (add-to-list 'default-frame-alist (cons 'left (/ (- (x-display-pixel-width) (* (frame-char-width) width)) 2)))
+        (add-to-list 'default-frame-alist (cons 'width width))
+        (add-to-list 'default-frame-alist (cons 'height (/ (x-display-pixel-height) (frame-char-height)))))))
 
 (set-frame-size-according-to-resolution)
 
@@ -61,9 +66,12 @@
 (set-face-foreground 'linum "#F1F1F1")
 
 ;; Key remap
-(when (memq window-system '(mac ns x))
+(when (memq window-system '(mac ns))
   (setq mac-option-modifier 'alt)
   (setq mac-command-modifier 'meta))
+
+(when (eq window-system 'x)
+  (setq x-super-keysym 'meta))
 
 ;; Backups
 (setq backup-by-copying t
