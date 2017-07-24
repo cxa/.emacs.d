@@ -19,7 +19,12 @@
     (autoload 'merlin-mode "merlin" nil t nil)
 
     ;; Automatically start it in OCaml buffers
-    (add-hook 'tuareg-mode-hook 'merlin-mode t)
+    (require 'ocp-indent)
+    (add-hook 'tuareg-mode-hook
+              '(lambda ()
+                 (merlin-mode)
+                 (setq indent-line-function 'ocp-indent-line)))
+              
     (add-hook 'caml-mode-hook 'merlin-mode t)
 
     ;; Make company aware of merlin
