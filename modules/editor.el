@@ -36,7 +36,7 @@
 
 (when (memq window-system '(mac ns))
   (defconst FONT "Nitti Pro-14"))
-  
+
 (set-face-attribute 'default nil :font FONT)
 (set-frame-font FONT nil t)
 
@@ -59,8 +59,8 @@
   (when nlinum-mode
     (setq-local nlinum-format
                 (concat "% " (number-to-string
-			      ;; Guesstimate number of buffer lines.
-			      (ceiling (log (max 1 (/ (buffer-size) 80)) 10)))
+                              ;; Guesstimate number of buffer lines.
+                              (ceiling (log (max 1 (/ (buffer-size) 80)) 10)))
                         "d "))))
 (add-hook 'nlinum-mode-hook #'my-nlinum-mode-hook)
 (set-face-foreground 'linum "#F1F1F1")
@@ -84,3 +84,10 @@
 
 ;;
 (global-auto-revert-mode t)
+
+;; Auto save
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
+
