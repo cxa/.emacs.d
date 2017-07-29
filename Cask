@@ -14,6 +14,7 @@
 (depends-on "smex")
 (depends-on "find-file-in-project")
 (depends-on "neotree")
+(depends-on "whitespace-cleanup-mode")
 
 ;; Markdown
 (depends-on "markdown-mode")

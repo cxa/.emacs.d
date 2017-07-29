@@ -134,3 +134,7 @@
         (message "Could not find git project root."))))
 
 (global-set-key (kbd "C-X C-N") 'neotree-project-dir)
+
+;; whitespace-cleanup-mode
+(require 'whitespace-cleanup-mode)
+(add-hook 'before-save-hook 'whitespace-cleanup)
