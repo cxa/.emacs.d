@@ -28,3 +28,9 @@
 (global-set-key "\t" 'my-indent-or-complete)
 (define-key company-active-map (kbd "C-n") 'company-select-next-or-abort)
 (define-key company-active-map (kbd "C-p") 'company-select-previous-or-abort)
+
+(defun prev-window ()
+  (interactive)
+  (other-window -1))
+(global-set-key (kbd "C-.") 'other-window)
+(global-set-key (kbd "C-,") 'prev-window)

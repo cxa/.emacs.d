@@ -12,6 +12,8 @@
 (depends-on "dash-functional")
 (depends-on "request")
 (depends-on "smex")
+(depends-on "find-file-in-project")
+(depends-on "neotree")
 
 ;; Markdown
 (depends-on "markdown-mode")

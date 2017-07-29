@@ -54,7 +54,9 @@
 (set-frame-size-according-to-resolution)
 
 ;; Line number
-(global-nlinum-mode)
+;;(global-nlinum-mode)
+(add-hook 'text-mode-hook 'nlinum-mode)
+(add-hook 'prog-mode-hook 'nlinum-mode)
 (defun my-nlinum-mode-hook ()
   (when nlinum-mode
     (setq-local nlinum-format
@@ -63,7 +65,11 @@
                               (ceiling (log (max 1 (/ (buffer-size) 80)) 10)))
                         "d "))))
 (add-hook 'nlinum-mode-hook #'my-nlinum-mode-hook)
-(set-face-foreground 'linum "#F1F1F1")
+(set-face-foreground 'linum "#F3F3F3")
+
+;; Window separator
+(set-face-background 'vertical-border "#F9F9F9")
+(set-face-foreground 'vertical-border (face-background 'vertical-border))
 
 ;; Key remap
 (when (memq window-system '(mac ns))
@@ -75,12 +81,12 @@
 
 ;; Backups
 (setq make-backup-files nil)
-;; (setq backup-by-copying t
-;;       backup-directory-alist '(("." . "~/.emacs-saves"))
-;;       delete-old-versions t
-;;       kept-new-versions 6
-;;       kept-old-versions 2
-;;       version-control t)
+(setq backup-by-copying t
+      backup-directory-alist '(("." . "~/.emacs-saves"))
+      delete-old-versions t
+      kept-new-versions 6
+      kept-old-versions 2
+      version-control t)
 
 ;;
 (global-auto-revert-mode t)
@@ -109,3 +115,22 @@
         (indent-buffer)
         (message "Indented buffer.")))))
 (global-set-key (kbd "C-M-\\") 'indent-region-or-buffer)
+
+;; Neotree
+(require 'neotree)
+(setq neo-theme 'ascii)
+(setq neo-autorefresh t)
+(setq neo-smart-open t)
+
+(defun neotree-project-dir ()
+    "Open NeoTree using the git root."
+    (interactive)
+    (let ((project-dir (ffip-project-root))
+          (file-name (buffer-file-name)))
+      (if project-dir
+          (progn
+            (neotree-dir project-dir)
+            (neotree-find file-name))
+        (message "Could not find git project root."))))
+
+(global-set-key (kbd "C-X C-N") 'neotree-project-dir)
