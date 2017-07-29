@@ -59,16 +59,17 @@
 (add-hook 'prog-mode-hook 'nlinum-mode)
 (defun my-nlinum-mode-hook ()
   (when nlinum-mode
-    (setq-local nlinum-format
-                (concat "% " (number-to-string
-                              ;; Guesstimate number of buffer lines.
-                              (ceiling (log (max 1 (/ (buffer-size) 80)) 10)))
-                        "d "))))
+    (progn
+      (setq-local nlinum-format
+                   (concat "% " (number-to-string
+                                 (ceiling (log (max 1 (/ (buffer-size) 80)) 10)))
+                           "d "))
+      (set-face-foreground 'linum "#F4F4F4"))))
+
 (add-hook 'nlinum-mode-hook #'my-nlinum-mode-hook)
-(set-face-foreground 'linum "#F3F3F3")
 
 ;; Window separator
-(set-face-background 'vertical-border "#F9F9F9")
+(set-face-background 'vertical-border "#FAFAFA")
 (set-face-foreground 'vertical-border (face-background 'vertical-border))
 
 ;; Key remap
@@ -121,6 +122,7 @@
 (setq neo-theme 'ascii)
 (setq neo-autorefresh t)
 (setq neo-smart-open t)
+(setq neo-force-change-root t)
 
 (defun neotree-project-dir ()
     "Open NeoTree using the git root."
