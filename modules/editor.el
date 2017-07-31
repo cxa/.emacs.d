@@ -30,6 +30,8 @@
 (and (fboundp 'tool-bar-mode)   (tool-bar-mode   -1))
 (and (fboundp 'tooltip-mode)    (fboundp 'x-show-tip) (tooltip-mode -1))
 
+(setq frame-title-format "") ;; TODO: remove title icon
+
 ;; Editor Font
 (when (eq window-system 'x)
   (defconst FONT "Nitti Pro SemiLight Slim-12"))

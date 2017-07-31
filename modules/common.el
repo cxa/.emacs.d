@@ -16,6 +16,7 @@
 (smex-initialize)
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
+(setq ffip-prefer-ido-mode t)
 
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
