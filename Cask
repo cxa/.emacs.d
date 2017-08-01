@@ -1,4 +1,3 @@
-
 (source gnu)
 (source melpa)
 
@@ -15,6 +14,8 @@
 (depends-on "find-file-in-project")
 (depends-on "neotree")
 (depends-on "whitespace-cleanup-mode")
+(depends-on "smart-mode-line")
+(depends-on "smart-mode-line-powerline-theme")
 
 ;; Markdown
 (depends-on "markdown-mode")
