@@ -1,6 +1,7 @@
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.s?css\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.json\\'" . web-mode))
 
 (defadvice company-tern (before web-mode-set-up-ac-sources activate)
   "Set `tern-mode' based on current language before running company-tern."
@@ -25,6 +26,7 @@
             (setq web-mode-code-indent-offset 2)
             (set (make-local-variable 'company-backends) '(company-tern company-web-html company-css))
             (enable-minor-mode '("\\.jsx?\\'" . prettier-js-mode))
+            (enable-minor-mode '("\\.json\\'" . prettier-js-mode))
             (enable-minor-mode '("\\.tsx?\\'" . prettier-js-mode))
             (enable-minor-mode '("\\.s?css\\'" . prettier-js-mode))))
 (require 'prettier-js)
