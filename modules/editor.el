@@ -147,7 +147,7 @@
 (set-face-attribute 'neo-dir-link-face nil :font "PragmataPro-16")
 (set-face-attribute 'neo-expand-btn-face nil :font "PragmataPro-16")
 (set-face-attribute 'neo-file-link-face nil :font "PragmataPro-16")
-(set-face-attribute 'neo-header-face nil :font "PragmataPro-16" :background "white")
+(set-face-attribute 'neo-header-face nil :font "PragmataPro-16" :background "white" :foreground "white")
 (set-face-attribute 'neo-root-dir-face nil :font "PragmataPro-16")
 
 ;; whitespace-cleanup-mode
