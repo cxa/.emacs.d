@@ -30,7 +30,8 @@
 (and (fboundp 'tool-bar-mode)   (tool-bar-mode   -1))
 (and (fboundp 'tooltip-mode)    (fboundp 'x-show-tip) (tooltip-mode -1))
 
-(setq frame-title-format "") ;; TODO: remove title icon
+;; `defaults write org.gnu.Emacs HideDocumentIcon YES` to remove title icon for mac
+(setq frame-title-format "")
 
 ;; Editor Font
 (when (eq window-system 'x)
@@ -41,6 +42,9 @@
 
 (set-face-attribute 'default nil :font FONT)
 (set-frame-font FONT nil t)
+
+;; Mode line
+(set-face-attribute 'mode-line nil :font "PragmataPro" :height 180)
 
 ;; Frame size
 (defun set-frame-size-according-to-resolution ()
@@ -66,7 +70,7 @@
                    (concat "% " (number-to-string
                                  (ceiling (log (max 1 (/ (buffer-size) 80)) 10)))
                            "d "))
-      (set-face-foreground 'linum "#F4F4F4"))))
+      (set-face-attribute 'linum nil :font "PragmataPro-15" :foreground "#F3F3F3"))))
 
 (add-hook 'nlinum-mode-hook #'my-nlinum-mode-hook)
 
@@ -138,6 +142,13 @@
         (message "Could not find git project root."))))
 
 (global-set-key (kbd "C-X C-N") 'neotree-project-dir)
+(set-face-attribute 'neo-banner-face nil :font "PragmataPro-16")
+(set-face-attribute 'neo-button-face nil :font "PragmataPro-16")
+(set-face-attribute 'neo-dir-link-face nil :font "PragmataPro-16")
+(set-face-attribute 'neo-expand-btn-face nil :font "PragmataPro-16")
+(set-face-attribute 'neo-file-link-face nil :font "PragmataPro-16")
+(set-face-attribute 'neo-header-face nil :font "PragmataPro-16" :background "white")
+(set-face-attribute 'neo-root-dir-face nil :font "PragmataPro-16")
 
 ;; whitespace-cleanup-mode
 (require 'whitespace-cleanup-mode)
