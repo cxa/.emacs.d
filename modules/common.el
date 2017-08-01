@@ -18,7 +18,6 @@
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
 ;; ffip
-(setq ffip-prefer-ido-mode t)
 (global-set-key (kbd "M-p") 'find-file-in-project)
 
 (require 'company)
