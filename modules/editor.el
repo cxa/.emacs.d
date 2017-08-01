@@ -61,16 +61,17 @@
 
 ;; Line number
 ;;(global-nlinum-mode)
+(require 'nlinum)
 (add-hook 'text-mode-hook 'nlinum-mode)
 (add-hook 'prog-mode-hook 'nlinum-mode)
+(set-face-attribute 'linum nil :font "PragmataPro-15" :foreground "#F3F3F3")
 (defun my-nlinum-mode-hook ()
   (when nlinum-mode
-    (progn
-      (setq-local nlinum-format
-                   (concat "% " (number-to-string
-                                 (ceiling (log (max 1 (/ (buffer-size) 80)) 10)))
-                           "d "))
-      (set-face-attribute 'linum nil :font "PragmataPro-15" :foreground "#F3F3F3"))))
+    (setq-local nlinum-format
+                (concat "% " (number-to-string
+                              (ceiling (log (max 1 (/ (buffer-size) 80)) 10))
+                        "d "))
+    )))
 
 (add-hook 'nlinum-mode-hook #'my-nlinum-mode-hook)
 
