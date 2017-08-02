@@ -45,13 +45,12 @@
 
 ;; Mode line
 (set-face-attribute 'mode-line nil :family "Nitti Grotesk")
-(set-face-attribute 'mode-line-buffer-id nil :weight 'bold)
 (setq mode-line-position nil)
 (setq line-number-mode nil)
 (setq-default
  sml/modified-char "🙀"
  sml/no-confirm-load-theme t
- sml/theme 'respectful)
+ sml/theme 'light)
 
 (sml/setup)
 
