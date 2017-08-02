@@ -51,9 +51,8 @@
  sml/modified-char "🙀"
  sml/no-confirm-load-theme t
  sml/theme 'light)
-
+(setq-default sml/replacer-regexp-list '((".*" " ") ))
 (sml/setup)
-
 
 ;; Frame size
 (defun set-frame-size-according-to-resolution ()
