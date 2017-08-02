@@ -14,7 +14,7 @@
 (depends-on "find-file-in-project")
 (depends-on "neotree")
 (depends-on "whitespace-cleanup-mode")
-(depends-on "smart-mode-line")
+(depends-on "smart-mode-line" :git "https://github.com/cxa/smart-mode-line.git")
 (depends-on "smart-mode-line-powerline-theme")
 
 ;; Markdown

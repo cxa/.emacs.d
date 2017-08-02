@@ -44,10 +44,17 @@
 (set-frame-font FONT nil t)
 
 ;; Mode line
-(set-face-attribute 'mode-line nil :font "Circular Std" :height 160)
-(setq sml/no-confirm-load-theme t)
-(setq sml/theme 'smart-mode-line-light-powerline)
+(set-face-attribute 'mode-line nil :family "Nitti Grotesk")
+(set-face-attribute 'mode-line-buffer-id nil :weight 'bold)
+(setq mode-line-position nil)
+(setq line-number-mode nil)
+(setq-default
+ sml/modified-char "🙀"
+ sml/no-confirm-load-theme t
+ sml/theme 'respectful)
+
 (sml/setup)
+
 
 ;; Frame size
 (defun set-frame-size-according-to-resolution ()
@@ -131,6 +138,7 @@
 (setq neo-theme 'ascii)
 (setq neo-autorefresh t)
 (setq neo-smart-open t)
+(setq neo-mode-line-type 'none)
 (setq neo-force-change-root t)
 
 (defun neotree-project-dir ()
@@ -145,13 +153,13 @@
         (message "Could not find git project root."))))
 
 (global-set-key (kbd "C-X C-N") 'neotree-project-dir)
-(set-face-attribute 'neo-banner-face nil :font "Circular Std-16")
-(set-face-attribute 'neo-button-face nil :font "Circular Std-16")
-(set-face-attribute 'neo-dir-link-face nil :font "Circular Std-16" :foreground "#999999" :underline t)
-(set-face-attribute 'neo-expand-btn-face nil :font "Circular Std-16")
-(set-face-attribute 'neo-file-link-face nil :font "Circular Std-16" :foreground "#999999")
-(set-face-attribute 'neo-header-face nil :font "Circular Std-16" :background "white" :foreground "white")
-(set-face-attribute 'neo-root-dir-face nil :font "Circular Std-16")
+(set-face-attribute 'neo-banner-face nil :font "Nitti Grotesk-14")
+(set-face-attribute 'neo-button-face nil :font "Nitti Grotesk-14")
+(set-face-attribute 'neo-dir-link-face nil :font "Nitti Grotesk-14" :foreground "#999999" :underline t)
+(set-face-attribute 'neo-expand-btn-face nil :font "Nitti Grotesk-14")
+(set-face-attribute 'neo-file-link-face nil :font "Nitti Grotesk-14" :foreground "#999999")
+(set-face-attribute 'neo-header-face nil :font "Nitti Grotesk-14" :background "white" :foreground "white")
+(set-face-attribute 'neo-root-dir-face nil :font "Nitti Grotesk-14")
 
 ;; whitespace-cleanup-mode
 (require 'whitespace-cleanup-mode)

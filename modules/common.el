@@ -1,9 +1,10 @@
 (when (memq window-system '(mac ns x))
   (exec-path-from-shell-initialize))
 
-(setq-default indent-tabs-mode nil)
-(setq-default tab-width 2)
-(setq-default c-basic-offset 'tab-width)
+(setq-default
+ indent-tabs-mode nil
+ tab-width 2
+ c-basic-offset 'tab-width)
 
 (require 'recentf)
 (recentf-mode 1)
