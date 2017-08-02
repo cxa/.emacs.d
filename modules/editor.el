@@ -153,13 +153,9 @@
         (message "Could not find git project root."))))
 
 (global-set-key (kbd "C-X C-N") 'neotree-project-dir)
-(set-face-attribute 'neo-banner-face nil :font "Nitti Grotesk-14")
-(set-face-attribute 'neo-button-face nil :font "Nitti Grotesk-14")
-(set-face-attribute 'neo-dir-link-face nil :font "Nitti Grotesk-14" :foreground "#999999" :underline t)
-(set-face-attribute 'neo-expand-btn-face nil :font "Nitti Grotesk-14")
-(set-face-attribute 'neo-file-link-face nil :font "Nitti Grotesk-14" :foreground "#999999")
-(set-face-attribute 'neo-header-face nil :font "Nitti Grotesk-14" :background "white" :foreground "white")
-(set-face-attribute 'neo-root-dir-face nil :font "Nitti Grotesk-14")
+(set-face-attribute 'neo-dir-link-face nil :foreground "#999999" :underline t)
+(set-face-attribute 'neo-file-link-face nil :foreground "#999999")
+(set-face-attribute 'neo-header-face nil :background "white" :foreground "white")
 
 ;; whitespace-cleanup-mode
 (require 'whitespace-cleanup-mode)
