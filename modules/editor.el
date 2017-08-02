@@ -48,9 +48,9 @@
 (setq mode-line-position nil)
 (setq line-number-mode nil)
 (setq-default
- sml/modified-char "🙀"
+ sml/modified-char "★"
  sml/no-confirm-load-theme t
- sml/theme 'light)
+ sml/theme 'smart-mode-line-light-powerline)
 (setq-default sml/replacer-regexp-list '((".*" " ") ))
 (sml/setup)
 
