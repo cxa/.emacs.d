@@ -38,13 +38,12 @@
   (defconst FONT "Nitti Pro SemiLight Slim-12"))
 
 (when (memq window-system '(mac ns))
-  (defconst FONT "Nitti Pro-14"))
+  (defconst FONT "Nitti Pro-12"))
 
 (set-face-attribute 'default nil :font FONT)
 (set-frame-font FONT nil t)
 
 ;; Mode line
-(set-face-attribute 'mode-line nil :family "Nitti Grotesk")
 (setq mode-line-position nil)
 (setq line-number-mode nil)
 (setq-default
@@ -73,7 +72,7 @@
 (require 'nlinum)
 (add-hook 'text-mode-hook 'nlinum-mode)
 (add-hook 'prog-mode-hook 'nlinum-mode)
-(set-face-attribute 'linum nil :font "Circular Std-15" :foreground "#F3F3F3")
+(set-face-attribute 'linum nil :font "Nitti Grotesk" :foreground "#F3F3F3")
 (defun my-nlinum-mode-hook ()
   (when nlinum-mode
     (setq-local nlinum-format
@@ -137,8 +136,38 @@
 (setq neo-theme 'ascii)
 (setq neo-autorefresh t)
 (setq neo-smart-open t)
-(setq neo-mode-line-type 'none)
 (setq neo-force-change-root t)
+(setq neo-mode-line-type 'custom)
+
+;; https://emacs.stackexchange.com/a/16660/16541
+(defun jordon-fancy-mode-line-render (left center right &optional lpad rpad)
+  "Return a string the width of the current window with
+LEFT, CENTER, and RIGHT spaced out accordingly, LPAD and RPAD,
+can be used to add a number of spaces to the front and back of the string."
+  (condition-case err
+      (let* ((left (if lpad (concat (make-string lpad ?\s) left) left))
+             (right (if rpad (concat right (make-string rpad ?\s)) right))
+             (width (apply '+ (window-width) (let ((m (window-margins))) (list (or (car m) 0) (or (cdr m) 0)))))
+             (total-length (+ (length left) (length center) (length right) 2)))
+        (when (> total-length width) (setq left "" right ""))
+        (let* ((left-space (/ (- width (length center)) 2))
+               (right-space (- width left-space (length center)))
+               (lspaces (max (- left-space (length left)) 1))
+               (rspaces (max (- right-space (length right)) 1 0)))
+          (concat left (make-string lspaces  ?\s)
+                  center
+                  (make-string rspaces ?\s)
+                  right)))
+    (error (format "[%s]: (%s) (%s) (%s)" err left center right))))
+
+(setq neo-mode-line-custom-format
+      '((:eval
+          (jordon-fancy-mode-line-render
+           " ❦"
+           (upcase (file-name-nondirectory (directory-file-name (ffip-project-root))))
+           "❦ "
+           1 1)
+          )))
 
 (defun neotree-project-dir ()
     "Open NeoTree using the git root."
@@ -148,7 +177,8 @@
       (if project-dir
           (progn
             (neotree-dir project-dir)
-            (neotree-find file-name))
+            (neotree-find file-name)
+            (other-window 1))
         (message "Could not find git project root."))))
 
 (global-set-key (kbd "C-X C-N") 'neotree-project-dir)
