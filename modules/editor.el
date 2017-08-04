@@ -49,6 +49,7 @@
 (setq line-number-mode nil)
 (setq-default
  sml/modified-char "★"
+ sml/show-remote nil
  sml/no-confirm-load-theme t
  sml/theme 'smart-mode-line-light-powerline)
 (setq-default sml/replacer-regexp-list '((".*" " ") ))
