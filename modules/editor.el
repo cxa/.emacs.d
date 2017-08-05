@@ -48,8 +48,10 @@
 (setq line-number-mode nil)
 (setq-default
  sml/modified-char "★"
+ sml/read-only-char "☯︎"
  sml/show-remote nil
  sml/no-confirm-load-theme t
+ sml/mule-info nil
  sml/theme 'smart-mode-line-light-powerline)
 (setq-default sml/replacer-regexp-list '((".*" " ") ))
 (sml/setup)
@@ -163,16 +165,19 @@ can be used to add a number of spaces to the front and back of the string."
 (setq neo-mode-line-custom-format
       '((:eval
           (jordon-fancy-mode-line-render
-           " ❦"
-           (upcase (file-name-nondirectory (directory-file-name (ffip-project-root))))
-           "❦ "
+           "❦"
+           (let ((project-dir (ignore-errors (or (ffip-project-root) nil))))
+             (if project-dir
+                 (upcase (file-name-nondirectory (directory-file-name project-dir)))
+               ""))
+           ""
            1 1)
           )))
 
 (defun neotree-project-dir ()
     "Open NeoTree using the git root."
     (interactive)
-    (let ((project-dir (ffip-project-root))
+    (let ((project-dir (ignore-errors (or (ffip-project-root) nil)))
           (file-name (buffer-file-name)))
       (if project-dir
           (progn
