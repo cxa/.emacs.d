@@ -74,7 +74,7 @@
 (require 'nlinum)
 (add-hook 'text-mode-hook 'nlinum-mode)
 (add-hook 'prog-mode-hook 'nlinum-mode)
-(set-face-attribute 'linum nil :font "Nitti Grotesk" :foreground "#F3F3F3")
+(set-face-attribute 'linum nil :foreground "#F3F3F3")
 (defun my-nlinum-mode-hook ()
   (when nlinum-mode
     (setq-local nlinum-format
@@ -135,7 +135,10 @@
 
 ;; Neotree
 (require 'neotree)
-(setq neo-theme 'ascii)
+(setq neo-theme 'custom)
+(setq
+ neo-theme-custom-open "○"
+ neo-theme-custom-close "●")
 (setq neo-autorefresh t)
 (setq neo-smart-open t)
 (setq neo-force-change-root t)
@@ -186,11 +189,16 @@ can be used to add a number of spaces to the front and back of the string."
             (other-window 1))
         (message "Could not find git project root."))))
 
-(global-set-key (kbd "C-X C-N") 'neotree-project-dir)
-(set-face-attribute 'neo-dir-link-face nil :foreground "#999999" :underline t)
+(global-set-key (kbd "C-x C-n") 'neotree-project-dir)
+(set-face-attribute 'neo-dir-link-face nil :foreground "#999999")
 (set-face-attribute 'neo-file-link-face nil :foreground "#999999")
 (set-face-attribute 'neo-header-face nil :background "white" :foreground "white")
 
 ;; whitespace-cleanup-mode
 (require 'whitespace-cleanup-mode)
 (add-hook 'before-save-hook 'whitespace-cleanup)
+
+;; Magit
+(require 'magit)
+(global-set-key (kbd "C-x C-g") 'magit-status)
+(global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
