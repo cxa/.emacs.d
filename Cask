@@ -25,6 +25,7 @@
 
 ;; OCaml
 (depends-on "oasis-mode" :git "https://github.com/cxa/oasis-mode.git")
+(depends-on "utop")
 
 ;; Reason
 (depends-on "reason-mode" :git "https://github.com/arichiardi/reason-mode.git")
