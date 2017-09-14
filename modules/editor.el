@@ -5,7 +5,8 @@
 (defconst THEME "sanityinc-tomorrow-day-theme")
 (load THEME t)
 
-;; Editor UI
+;; Fringe
+(set-face-attribute 'fringe nil :background "white")
 (define-fringe-bitmap 'right-curly-arrow
   [#b00000000
    #b00000000
@@ -74,7 +75,7 @@
 (require 'nlinum)
 (add-hook 'text-mode-hook 'nlinum-mode)
 (add-hook 'prog-mode-hook 'nlinum-mode)
-(set-face-attribute 'linum nil :foreground "#F3F3F3")
+(set-face-attribute 'linum nil :foreground "#F3F3F3" :background "white")
 (defun my-nlinum-mode-hook ()
   (when nlinum-mode
     (setq-local nlinum-format
