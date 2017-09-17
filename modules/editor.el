@@ -35,14 +35,11 @@
 (setq frame-title-format "")
 
 ;; Editor Font
-(when (eq window-system 'x)
-  (defconst FONT "Nitti Pro SemiLight Slim-12"))
-
-(when (memq window-system '(mac ns))
-  (defconst FONT "Nitti Pro-12"))
-
-(set-face-attribute 'default nil :font FONT)
-(set-frame-font FONT nil t)
+(set-face-attribute 'default nil
+                    :family "Triplicate T4c"
+                    :height 140
+                    :slant 'italic)
+(setq-default line-spacing 6)
 
 ;; Mode line
 (setq mode-line-position nil)
