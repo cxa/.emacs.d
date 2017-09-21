@@ -36,9 +36,11 @@
 
 ;; Editor Font
 (set-face-attribute 'default nil
-                    :family "Triplicate T4c"
-                    :height 140
-                    :slant 'italic)
+                    :family "Nitti PX"
+                    :height 155)
+(dolist (charset '(han cjk-misc bopomofo))
+  (set-fontset-font (frame-parameter nil 'font) charset
+                    (font-spec :family "PingFang SC" :size 13)))
 (setq-default line-spacing 6)
 
 ;; Mode line
