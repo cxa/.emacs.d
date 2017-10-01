@@ -23,6 +23,9 @@
 (depends-on "markdown-mode")
 (depends-on "markdownfmt")
 
+;; StandardML
+(depends-on "sml-mode")
+
 ;; OCaml
 (depends-on "oasis-mode" :git "https://github.com/cxa/oasis-mode.git")
 (depends-on "utop")

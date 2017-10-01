@@ -12,6 +12,7 @@
 (load "editor")
 (load "markdown")
 (load "ocaml")
+(load "standardml")
 (load "reason")
 (load "web")
 (load "docker")
