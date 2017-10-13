@@ -14,6 +14,7 @@
 (load "ocaml")
 (load "standardml")
 (load "reason")
+(load "fsharp")
 (load "web")
 (load "docker")
 (load "yaml")

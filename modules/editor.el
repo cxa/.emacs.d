@@ -41,7 +41,7 @@
 (dolist (charset '(han cjk-misc bopomofo))
   (set-fontset-font (frame-parameter nil 'font) charset
                     (font-spec :family "PingFang SC")))
-(setq-default line-spacing 6)
+(setq-default line-spacing 10)
 
 ;; Mode line
 (setq mode-line-position nil)

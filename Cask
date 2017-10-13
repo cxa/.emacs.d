@@ -33,6 +33,9 @@
 ;; Reason
 (depends-on "reason-mode" :git "https://github.com/arichiardi/reason-mode.git")
 
+;; F#
+(depends-on "fsharp-mode")
+
 ;; Swift
 (depends-on "swift-mode")
 (depends-on "sourcekit")
