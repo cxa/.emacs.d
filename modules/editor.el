@@ -36,12 +36,13 @@
 
 ;; Editor Font
 (set-face-attribute 'default nil
-                    :family "Nitti Pro"
-                    :height 140)
-(dolist (charset '(han cjk-misc bopomofo))
+                    :family "Pitch Sans"
+                    :height 160)
+(dolist (charset '(han cjk-misc bopomofo symbol))
   (set-fontset-font (frame-parameter nil 'font) charset
-                    (font-spec :family "PingFang SC")))
+                    (font-spec :family "PingFang SC" :weight 'light :size 14)))
 (setq-default line-spacing 10)
+(global-prettify-symbols-mode +1)
 
 ;; Mode line
 (setq mode-line-position nil)
