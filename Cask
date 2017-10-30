@@ -52,6 +52,11 @@
 (depends-on "company-tern")
 (depends-on "prettier-js")
 
+;; Java
+(depends-on "eclim")
+(depends-on "gradle-mode")
+(depends-on "company-emacs-eclim")
+
 ;; Docker
 (depends-on "dockerfile-mode" :git "https://github.com/spotify/dockerfile-mode.git")
 

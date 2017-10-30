@@ -15,7 +15,16 @@ External tools
 opam install merlin tuareg ocp-indent
 go get -u github.com/shurcooL/markdownfmt
 npm i -g tern prettier
+
 ```
+
+### For Java
+
+```sh
+brew cask install eclipse-ide
+```
+
+Install [eclim](http://eclim.org) to `/Applications/Eclipse.app/Contents/Eclipse` and add its bin dir to `$PATH`.
 
 Personal macOS stuff
 --------------------

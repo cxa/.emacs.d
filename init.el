@@ -16,6 +16,7 @@
 (load "reason")
 (load "fsharp")
 (load "web")
+(load "java")
 (load "docker")
 (load "yaml")
 
