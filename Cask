@@ -57,6 +57,10 @@
 (depends-on "gradle-mode")
 (depends-on "company-emacs-eclim")
 
+;; Clojure
+(depends-on "clojure-mode")
+(depends-on "cider")
+
 ;; Docker
 (depends-on "dockerfile-mode" :git "https://github.com/spotify/dockerfile-mode.git")
 
