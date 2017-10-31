@@ -38,3 +38,5 @@
   (other-window -1))
 (global-set-key (kbd "C-.") 'other-window)
 (global-set-key (kbd "C-,") 'prev-window)
+
+(electric-pair-mode 1)
