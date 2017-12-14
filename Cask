@@ -21,7 +21,10 @@
 
 ;; Markdown
 (depends-on "markdown-mode")
-(depends-on "markdownfmt")
+
+;; Haskell
+(depends-on "haskell-mode")
+(depends-on "intero")
 
 ;; StandardML
 (depends-on "sml-mode")

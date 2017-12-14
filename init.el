@@ -11,6 +11,7 @@
 (load "common")
 (load "editor")
 (load "markdown")
+(load "haskell")
 (load "ocaml")
 (load "standardml")
 (load "reason")
