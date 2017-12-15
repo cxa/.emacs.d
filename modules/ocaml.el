@@ -33,6 +33,8 @@
 
     (add-hook 'caml-mode-hook 'merlin-mode t)
 
+    (setq tuareg-prettify-symbols-full t)
+
     ;; Make company aware of merlin
     (with-eval-after-load 'company
       (add-to-list 'company-backends 'merlin-company-backend))
