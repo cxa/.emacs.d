@@ -138,8 +138,8 @@
 (require 'neotree)
 (setq neo-theme 'custom)
 (setq
- neo-theme-custom-open "○"
- neo-theme-custom-close "●")
+ neo-theme-custom-open "▫︎"
+ neo-theme-custom-close "▪︎")
 (setq neo-autorefresh t)
 (setq neo-smart-open t)
 (setq neo-force-change-root t)
