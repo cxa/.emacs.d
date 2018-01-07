@@ -1,3 +1,4 @@
+(add-to-list 'auto-mode-alist '(".fsproj\\'" . xml-mode))
 (setq inferior-fsharp-program "fsharpi --readline-")
 (setq-default fsharp-indent-offset 2)
 ;; https://github.com/ocaml/tuareg/blob/a6d1589e256d861bfb51c59756b0aa25e88dfb89/tuareg.el#L527
