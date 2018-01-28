@@ -36,12 +36,12 @@
 
 ;; Editor Font
 (set-face-attribute 'default nil
-                    :family "Pitch Sans"
+                    :family "Courier Prime Code"
                     :height 160)
 (dolist (charset '(han cjk-misc bopomofo symbol))
   (set-fontset-font (frame-parameter nil 'font) charset
-                    (font-spec :family "PingFang SC" :weight 'light :size 14)))
-(setq-default line-spacing 10)
+                    (font-spec :family "PingFang SC" :weight 'normal :size 14)))
+(setq-default line-spacing 12)
 (global-prettify-symbols-mode +1)
 
 ;; Mode line
@@ -53,9 +53,11 @@
  sml/show-remote nil
  sml/no-confirm-load-theme t
  sml/mule-info nil
- sml/theme 'smart-mode-line-light-powerline)
+ sml/theme 'light)
+;; sml/theme 'smart-mode-line-light-powerline)
 (setq-default sml/replacer-regexp-list '((".*" " ") ))
 (sml/setup)
+(set-face-attribute 'mode-line nil :box nil)
 
 ;; Frame size
 (defun set-frame-size-according-to-resolution ()
