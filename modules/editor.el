@@ -36,29 +36,23 @@
 
 ;; Editor Font
 (set-face-attribute 'default nil
-                    :family "Courier Prime Code"
+                    :family "Courier Prime Sans"
                     :height 160)
 (dolist (charset '(han cjk-misc bopomofo symbol))
   (set-fontset-font (frame-parameter nil 'font) charset
                     (font-spec :family "PingFang SC" :weight 'normal :size 14)))
 (setq-default line-spacing 12)
 (global-prettify-symbols-mode +1)
-
-;; Mode line
-(setq mode-line-position nil)
-(setq line-number-mode nil)
-(setq-default
- sml/modified-char "★"
- sml/read-only-char "☯︎"
- sml/show-remote nil
- sml/no-confirm-load-theme t
- sml/mule-info nil
- sml/theme 'light)
-;; sml/theme 'smart-mode-line-light-powerline)
-(setq-default sml/replacer-regexp-list '((".*" " ") ))
-(sml/setup)
-(set-face-attribute 'mode-line nil :box nil)
-
+(set-face-attribute 'mode-line nil
+                    :weight 'bold
+                    :foreground "#999999"
+                    :background "#f7f7f7"
+                    :box '(:line-width 6 :color "#f7f7f7"))
+(set-face-attribute 'mode-line-inactive nil
+                    :weight 'bold
+                    :foreground "#cccccc"
+                    :background "#fafafa"
+                    :box '(:line-width 6 :color "#fafafa"))
 ;; Frame size
 (defun set-frame-size-according-to-resolution ()
   (interactive)
@@ -139,9 +133,6 @@
 ;; Neotree
 (require 'neotree)
 (setq neo-theme 'custom)
-(setq
- neo-theme-custom-open "▫︎"
- neo-theme-custom-close "▪︎")
 (setq neo-autorefresh t)
 (setq neo-smart-open t)
 (setq neo-force-change-root t)
@@ -171,7 +162,7 @@ can be used to add a number of spaces to the front and back of the string."
 (setq neo-mode-line-custom-format
       '((:eval
           (jordon-fancy-mode-line-render
-           "❦"
+           ""
            (let ((project-dir (ignore-errors (or (ffip-project-root) nil))))
              (if project-dir
                  (upcase (file-name-nondirectory (directory-file-name project-dir)))
