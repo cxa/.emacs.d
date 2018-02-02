@@ -130,9 +130,12 @@
         (message "Indented buffer.")))))
 (global-set-key (kbd "C-M-\\") 'indent-region-or-buffer)
 
-;; Neotree
+;; Netroee
+(require 'all-the-icons)
+(setq all-the-icons-scale-factor 0.6)
 (require 'neotree)
-(setq neo-theme 'custom)
+;;(setq neo-theme 'custom)
+(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
 (setq neo-autorefresh t)
 (setq neo-smart-open t)
 (setq neo-force-change-root t)
@@ -184,9 +187,9 @@ can be used to add a number of spaces to the front and back of the string."
         (message "Could not find git project root."))))
 
 (global-set-key (kbd "C-x C-n") 'neotree-project-dir)
-(set-face-attribute 'neo-dir-link-face nil :foreground "#999999")
-(set-face-attribute 'neo-file-link-face nil :foreground "#999999")
-(set-face-attribute 'neo-header-face nil :background "white" :foreground "white")
+(set-face-attribute 'neo-dir-link-face nil :foreground "#999999" :height 140)
+(set-face-attribute 'neo-file-link-face nil :foreground "#999999" :height 140)
+(set-face-attribute 'neo-header-face nil :background "white" :foreground "white" :height 140)
 
 ;; whitespace-cleanup-mode
 (require 'whitespace-cleanup-mode)
