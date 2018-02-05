@@ -2,7 +2,7 @@
 (source melpa)
 
 ;; Commons
-(depends-on "all-the-icons")
+(depends-on "all-the-icons" :git "https://github.com/cxa/all-the-icons.el.git" :files ("*.el" "data"))
 (depends-on "exec-path-from-shell" :git "https://github.com/purcell/exec-path-from-shell.git")
 (depends-on "color-theme-sanityinc-tomorrow")
 (depends-on "nlinum")
@@ -13,7 +13,7 @@
 (depends-on "request")
 (depends-on "smex")
 (depends-on "find-file-in-project")
-(depends-on "neotree")
+(depends-on "neotree" :git "https://github.com/cxa/emacs-neotree.git")
 (depends-on "whitespace-cleanup-mode")
 (depends-on "magit")
 

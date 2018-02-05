@@ -34,6 +34,8 @@
 ;; `defaults write org.gnu.Emacs HideDocumentIcon YES` to remove title icon for mac
 (setq frame-title-format "")
 
+(setq initial-buffer-choice 'recentf-open-files)
+
 ;; Editor Font
 (set-face-attribute 'default nil
                     :family "Courier Prime Sans"
@@ -58,12 +60,11 @@
   (interactive)
   (if window-system
       (progn
-        (defconst width 120)
+        (defconst width 110)
         (add-to-list 'default-frame-alist (cons 'top 0))
         (add-to-list 'default-frame-alist (cons 'left (/ (- (x-display-pixel-width) (* (frame-char-width) width)) 2)))
         (add-to-list 'default-frame-alist (cons 'width width))
         (add-to-list 'default-frame-alist (cons 'height (/ (x-display-pixel-height) (frame-char-height)))))))
-
 (set-frame-size-according-to-resolution)
 
 ;; Line number
@@ -139,7 +140,17 @@
 (setq neo-autorefresh t)
 (setq neo-smart-open t)
 (setq neo-force-change-root t)
+(setq neo-show-slash-for-folder nil)
 (setq neo-mode-line-type 'custom)
+(defun neotree-startup ()
+  (interactive)
+  (neotree-show)
+  (call-interactively 'other-window))
+
+(if (daemonp)
+    (add-hook 'server-switch-hook #'neotree-startup)
+  (add-hook 'after-init-hook #'neotree-startup)
+  )
 
 ;; https://emacs.stackexchange.com/a/16660/16541
 (defun jordon-fancy-mode-line-render (left center right &optional lpad rpad)
