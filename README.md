@@ -2,6 +2,8 @@
 
 My relocatable Emacs config with [Cask](https://github.com/cask/cask).
 
+![screenshot](screenshot.png)
+
 ## Usage
 
 Install Cask if you haven't, clone and run `cask`.
