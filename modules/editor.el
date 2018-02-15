@@ -45,16 +45,21 @@
                     (font-spec :family "PingFang SC" :weight 'normal :size 14)))
 (setq-default line-spacing 12)
 (global-prettify-symbols-mode +1)
+
+(require 'all-the-icons)
+(setq all-the-icons-scale-factor 0.6)
+;; Mode line
 (set-face-attribute 'mode-line nil
                     :weight 'bold
                     :foreground "#999999"
                     :background "#f7f7f7"
-                    :box '(:line-width 6 :color "#f7f7f7"))
+                    :box '(:line-width 4 :color "#f7f7f7"))
 (set-face-attribute 'mode-line-inactive nil
                     :weight 'bold
-                    :foreground "#cccccc"
-                    :background "#fafafa"
-                    :box '(:line-width 6 :color "#fafafa"))
+                    :foreground "#999999"
+                    :background "#f7f7f7"
+                    :box '(:line-width 4 :color "#f7f7f7"))
+
 ;; Frame size
 (defun set-frame-size-according-to-resolution ()
   (interactive)
@@ -132,8 +137,6 @@
 (global-set-key (kbd "C-M-\\") 'indent-region-or-buffer)
 
 ;; Netroee
-(require 'all-the-icons)
-(setq all-the-icons-scale-factor 0.6)
 (require 'neotree)
 ;;(setq neo-theme 'custom)
 (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
@@ -152,38 +155,12 @@
   (add-hook 'after-init-hook #'neotree-startup)
   )
 
-;; https://emacs.stackexchange.com/a/16660/16541
-(defun jordon-fancy-mode-line-render (left center right &optional lpad rpad)
-  "Return a string the width of the current window with
-LEFT, CENTER, and RIGHT spaced out accordingly, LPAD and RPAD,
-can be used to add a number of spaces to the front and back of the string."
-  (condition-case err
-      (let* ((left (if lpad (concat (make-string lpad ?\s) left) left))
-             (right (if rpad (concat right (make-string rpad ?\s)) right))
-             (width (apply '+ (window-width) (let ((m (window-margins))) (list (or (car m) 0) (or (cdr m) 0)))))
-             (total-length (+ (length left) (length center) (length right) 2)))
-        (when (> total-length width) (setq left "" right ""))
-        (let* ((left-space (/ (- width (length center)) 2))
-               (right-space (- width left-space (length center)))
-               (lspaces (max (- left-space (length left)) 1))
-               (rspaces (max (- right-space (length right)) 1 0)))
-          (concat left (make-string lspaces  ?\s)
-                  center
-                  (make-string rspaces ?\s)
-                  right)))
-    (error (format "[%s]: (%s) (%s) (%s)" err left center right))))
-
+(require 'nyan-mode)
+(setq nyan-minimum-window-width neo-window-width)
 (setq neo-mode-line-custom-format
-      '((:eval
-          (jordon-fancy-mode-line-render
-           ""
-           (let ((project-dir (ignore-errors (or (ffip-project-root) nil))))
-             (if project-dir
-                 (upcase (file-name-nondirectory (directory-file-name project-dir)))
-               ""))
-           ""
-           1 1)
-          )))
+      (list
+       '(:eval (list (nyan-create)))
+       ))
 
 (defun neotree-project-dir ()
     "Open NeoTree using the git root."
@@ -196,7 +173,6 @@ can be used to add a number of spaces to the front and back of the string."
             (neotree-find file-name)
             (other-window 1))
         (message "Could not find git project root."))))
-
 (global-set-key (kbd "C-x C-n") 'neotree-project-dir)
 (set-face-attribute 'neo-dir-link-face nil :foreground "#999999" :height 140)
 (set-face-attribute 'neo-file-link-face nil :foreground "#999999" :height 140)
