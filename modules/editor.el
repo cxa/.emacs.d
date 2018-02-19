@@ -5,31 +5,13 @@
 (defconst THEME "sanityinc-tomorrow-day-theme")
 (load THEME t)
 
-;; Fringe
+(fringe-mode -1)
 (set-face-attribute 'fringe nil :background "white")
-(define-fringe-bitmap 'right-curly-arrow
-  [#b00000000
-   #b00000000
-   #b00000000
-   #b00000000
-   #b01110000
-   #b00010000
-   #b00010000
-   #b00000000])
-(define-fringe-bitmap 'left-curly-arrow
-  [#b00000000
-   #b00001000
-   #b00001000
-   #b00001110
-   #b00000000
-   #b00000000
-   #b00000000
-   #b00000000])
-
 (and (fboundp 'menu-bar-mode)   (menu-bar-mode   -1))
 (and (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (and (fboundp 'tool-bar-mode)   (tool-bar-mode   -1))
 (and (fboundp 'tooltip-mode)    (fboundp 'x-show-tip) (tooltip-mode -1))
+(setq-default word-wrap t)
 
 ;; `defaults write org.gnu.Emacs HideDocumentIcon YES` to remove title icon for mac
 (setq frame-title-format "")
@@ -60,17 +42,20 @@
                     :background "#f7f7f7"
                     :box '(:line-width 4 :color "#f7f7f7"))
 
+(set-frame-parameter nil 'internal-border-width 12)
+
 ;; Frame size
-(defun set-frame-size-according-to-resolution ()
-  (interactive)
-  (if window-system
-      (progn
-        (defconst width 110)
-        (add-to-list 'default-frame-alist (cons 'top 0))
-        (add-to-list 'default-frame-alist (cons 'left (/ (- (x-display-pixel-width) (* (frame-char-width) width)) 2)))
-        (add-to-list 'default-frame-alist (cons 'width width))
-        (add-to-list 'default-frame-alist (cons 'height (/ (x-display-pixel-height) (frame-char-height)))))))
-(set-frame-size-according-to-resolution)
+;; (defun set-frame-size-according-to-resolution ()
+;;   (interactive)
+;;   (if window-system
+;;       (progn
+;;         (defconst width 110)
+;;         (add-to-list 'default-frame-alist (cons 'undecorated t))
+;;         (add-to-list 'default-frame-alist (cons 'top 0))
+;;         (add-to-list 'default-frame-alist (cons 'left (/ (- (x-display-pixel-width) (* (frame-char-width) width)) 2)))
+;;         (add-to-list 'default-frame-alist (cons 'width width))
+;;         (add-to-list 'default-frame-alist (cons 'height (/ (x-display-pixel-height) (frame-char-height)))))))
+;; (set-frame-size-according-to-resolution)
 
 ;; Line number
 ;;(global-nlinum-mode)
@@ -81,7 +66,7 @@
 (defun my-nlinum-mode-hook ()
   (when nlinum-mode
     (setq-local nlinum-format
-                (concat "% " (number-to-string
+                (concat "%" (number-to-string
                               ;; Guesstimate number of buffer lines.
                               (ceiling (log (max 1 (/ (buffer-size) 80)) 10)))
                         "d "))))
@@ -145,16 +130,6 @@
 (setq neo-force-change-root t)
 (setq neo-show-slash-for-folder nil)
 (setq neo-mode-line-type 'custom)
-(defun neotree-startup ()
-  (interactive)
-  (neotree-show)
-  (call-interactively 'other-window))
-
-(if (daemonp)
-    (add-hook 'server-switch-hook #'neotree-startup)
-  (add-hook 'after-init-hook #'neotree-startup)
-  )
-
 (require 'nyan-mode)
 (setq nyan-minimum-window-width neo-window-width)
 (setq neo-mode-line-custom-format
@@ -174,6 +149,7 @@
             (other-window 1))
         (message "Could not find git project root."))))
 (global-set-key (kbd "C-x C-n") 'neotree-project-dir)
+(global-set-key (kbd "C-x RET") 'neotree-toggle)
 (set-face-attribute 'neo-dir-link-face nil :foreground "#999999" :height 140)
 (set-face-attribute 'neo-file-link-face nil :foreground "#999999" :height 140)
 (set-face-attribute 'neo-header-face nil :background "white" :foreground "white" :height 140)
