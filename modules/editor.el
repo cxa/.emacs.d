@@ -1,3 +1,5 @@
+(setq default-frame-alist '((undecorated . t)))
+
 ;; Env path
 (exec-path-from-shell-initialize)
 
@@ -6,6 +8,7 @@
 (load THEME t)
 
 (fringe-mode -1)
+
 (set-face-attribute 'fringe nil :background "white")
 (and (fboundp 'menu-bar-mode)   (menu-bar-mode   -1))
 (and (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
@@ -43,19 +46,7 @@
                     :box '(:line-width 4 :color "#f7f7f7"))
 
 (set-frame-parameter nil 'internal-border-width 12)
-
-;; Frame size
-;; (defun set-frame-size-according-to-resolution ()
-;;   (interactive)
-;;   (if window-system
-;;       (progn
-;;         (defconst width 110)
-;;         (add-to-list 'default-frame-alist (cons 'undecorated t))
-;;         (add-to-list 'default-frame-alist (cons 'top 0))
-;;         (add-to-list 'default-frame-alist (cons 'left (/ (- (x-display-pixel-width) (* (frame-char-width) width)) 2)))
-;;         (add-to-list 'default-frame-alist (cons 'width width))
-;;         (add-to-list 'default-frame-alist (cons 'height (/ (x-display-pixel-height) (frame-char-height)))))))
-;; (set-frame-size-according-to-resolution)
+(setq frame-resize-pixelwise t)
 
 ;; Line number
 ;;(global-nlinum-mode)
