@@ -30,6 +30,14 @@
                     (font-spec :family "PingFang SC" :weight 'normal :size 14)))
 (setq-default line-spacing 12)
 (global-prettify-symbols-mode +1)
+(defun common-pretty-symbols ()
+  (setq prettify-symbols-alist
+        '(
+          ("->" . 8594)
+          ("=>" . 8658)
+          ("<-" . 8592)
+          ("<=" . 8804))))
+(add-hook 'prog-mode-hook 'common-pretty-symbols)
 
 (require 'all-the-icons)
 (setq all-the-icons-scale-factor 0.6)

@@ -63,6 +63,13 @@
 (depends-on "clojure-mode")
 (depends-on "cider")
 
+;; Rust
+(depends-on "rust-mode")
+(depends-on "cargo")
+(depends-on "racer")
+(depends-on "toml-mode")
+(depends-on "flycheck-rust")
+
 ;; Docker
 (depends-on "dockerfile-mode" :git "https://github.com/spotify/dockerfile-mode.git")
 

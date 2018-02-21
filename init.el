@@ -18,6 +18,7 @@
 (load "fsharp")
 (load "web")
 (load "java")
+(load "rust")
 (load "docker")
 (load "yaml")
 
