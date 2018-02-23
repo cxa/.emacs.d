@@ -56,6 +56,14 @@
 (set-frame-parameter nil 'internal-border-width 12)
 (setq frame-resize-pixelwise t)
 
+;; show indicator for lines exceeding column 80
+(require 'whitespace)
+(setq whitespace-line-column 80)
+(setq whitespace-style '(face lines-tail))
+(add-hook 'prog-mode-hook 'whitespace-mode)
+
+;; show column number in modeline
+(setq column-number-mode t)
 ;; Line number
 (require 'nlinum)
 (global-nlinum-mode)
