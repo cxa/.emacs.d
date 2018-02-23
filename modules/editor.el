@@ -7,6 +7,8 @@
 (defconst THEME "sanityinc-tomorrow-day-theme")
 (load THEME t)
 
+(setq-default cursor-type 'hbar)
+
 (fringe-mode -1)
 
 (set-face-attribute 'fringe nil :background "white")
