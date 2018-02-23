@@ -57,15 +57,13 @@
 (setq frame-resize-pixelwise t)
 
 ;; Line number
-;;(global-nlinum-mode)
 (require 'nlinum)
-(add-hook 'text-mode-hook 'nlinum-mode)
-(add-hook 'prog-mode-hook 'nlinum-mode)
+(global-nlinum-mode)
 (set-face-attribute 'linum nil :foreground "#F3F3F3" :background "white")
 (defun my-nlinum-mode-hook ()
   (when nlinum-mode
     (setq-local nlinum-format
-                (concat "%" (number-to-string
+                (concat " %" (number-to-string
                               ;; Guesstimate number of buffer lines.
                               (ceiling (log (max 1 (/ (buffer-size) 80)) 10)))
                         "d "))))
@@ -135,6 +133,8 @@
       (list
        '(:eval (list (nyan-create)))
        ))
+(defun disable-nlinum (_unused) (nlinum-mode -1))
+(add-hook 'neo-after-create-hook 'disable-nlinum)
 
 (defun neotree-project-dir ()
     "Open NeoTree using the git root."
