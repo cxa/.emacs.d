@@ -28,7 +28,6 @@
 (dolist (charset '(han cjk-misc bopomofo symbol))
   (set-fontset-font (frame-parameter nil 'font) charset
                     (font-spec :family "PingFang SC" :weight 'normal :size 14)))
-(setq-default line-spacing 12)
 (global-prettify-symbols-mode +1)
 (defun common-pretty-symbols ()
   (setq prettify-symbols-alist
