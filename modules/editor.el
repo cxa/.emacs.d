@@ -78,9 +78,6 @@
   (setq mac-option-modifier 'alt)
   (setq mac-command-modifier 'meta))
 
-(when (eq window-system 'x)
-  (setq x-super-keysym 'meta))
-
 ;; Backups
 (setq make-backup-files nil)
 (setq backup-by-copying t
