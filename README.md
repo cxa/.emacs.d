@@ -24,6 +24,21 @@ brew cask install eclipse-ide
 
 Install [eclim](http://eclim.org) to `/Applications/Eclipse.app/Contents/Eclipse` and add its bin dir to `$PATH`.
 
+## For Erlang
+
+``` sh
+brew install kerl
+echo 'KERL_CONFIGURE_OPTIONS="--disable-hipe --enable-smp-support --enable-threads
+                        --enable-kernel-poll --without-odbc --enable-darwin-64bit"' > ~/.kerlrc
+kerl build 20.2 20.2
+kerl install 20.2 ~/.kerl/20.2
+cd ~/.emacs.d
+git submodule update --init
+cd distel
+make
+echo 'code:add_pathsz(["~/.emacs.d/distel/ebin"]).' >> ~/.erlang
+```
+
 ## Personal macOS stuff
 
 ```sh

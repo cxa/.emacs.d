@@ -70,6 +70,9 @@
 (depends-on "toml-mode")
 (depends-on "flycheck-rust")
 
+;; Erlang
+(depends-on "company-distel")
+
 ;; Docker
 (depends-on "dockerfile-mode" :git "https://github.com/spotify/dockerfile-mode.git")
 

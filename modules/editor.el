@@ -16,7 +16,8 @@
 (and (fboundp 'tooltip-mode)    (fboundp 'x-show-tip) (tooltip-mode -1))
 (setq-default word-wrap t)
 
-;; `defaults write org.gnu.Emacs HideDocumentIcon YES` to remove title icon for mac
+;; `defaults write org.gnu.Emacs HideDocumentIcon YES`
+;; to remove title icon for mac
 (setq frame-title-format "")
 
 (setq initial-buffer-choice 'recentf-open-files)
@@ -45,12 +46,12 @@
                     :weight 'bold
                     :foreground "#999999"
                     :background "#f7f7f7"
-                    :box '(:line-width 4 :color "#f7f7f7"))
+                    :box '(:line-width 1 :color "#f7f7f7"))
 (set-face-attribute 'mode-line-inactive nil
                     :weight 'bold
                     :foreground "#999999"
                     :background "#f7f7f7"
-                    :box '(:line-width 4 :color "#f7f7f7"))
+                    :box '(:line-width 1 :color "#f7f7f7"))
 
 (set-frame-parameter nil 'internal-border-width 12)
 (setq frame-resize-pixelwise t)
@@ -155,7 +156,10 @@
 (global-set-key (kbd "C-x RET") 'neotree-toggle)
 (set-face-attribute 'neo-dir-link-face nil :foreground "#999999" :height 140)
 (set-face-attribute 'neo-file-link-face nil :foreground "#999999" :height 140)
-(set-face-attribute 'neo-header-face nil :background "white" :foreground "white" :height 140)
+(set-face-attribute 'neo-header-face nil
+                    :background "white"
+                    :foreground "white"
+                    :height 140)
 
 ;; whitespace-cleanup-mode
 (require 'whitespace-cleanup-mode)

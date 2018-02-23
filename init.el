@@ -19,6 +19,7 @@
 (load "web")
 (load "java")
 (load "rust")
+(load "erlang")
 (load "docker")
 (load "yaml")
 
