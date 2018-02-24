@@ -39,6 +39,8 @@ make
 echo 'code:add_pathsz(["~/.emacs.d/distel/ebin"]).' >> ~/.erlang
 ```
 
+Add `. ~/.kerl/20.2/activate` to `.zshrc` or `.bashrc`.
+
 ## Personal macOS stuff
 
 ```sh
