@@ -15,7 +15,6 @@
 (depends-on "smex")
 (depends-on "find-file-in-project")
 (depends-on "neotree" :git "https://github.com/cxa/emacs-neotree.git")
-(depends-on "whitespace-cleanup-mode")
 (depends-on "magit")
 
 ;; Markdown

@@ -1,7 +1,9 @@
 (require 'oasis-mode)
 (add-to-list 'auto-mode-alist '("/jbuild$" . lisp-mode))
 
-(let ((opam-share (ignore-errors (car (process-lines "opam" "config" "var" "share")))))
+(let
+    ((opam-share
+      (ignore-errors (car (process-lines "opam" "config" "var" "share")))))
   (when (and opam-share (file-directory-p opam-share))
     (add-to-list 'load-path (expand-file-name "emacs/site-lisp" opam-share))
 
@@ -29,11 +31,10 @@
     (add-hook 'tuareg-mode-hook
               '(lambda ()
                  (merlin-mode)
+                 (setq tuareg-prettify-symbols-full t)
                  (setq indent-line-function 'ocp-indent-line)))
 
     (add-hook 'caml-mode-hook 'merlin-mode t)
-
-    (setq tuareg-prettify-symbols-full t)
 
     ;; Make company aware of merlin
     (with-eval-after-load 'company

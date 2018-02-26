@@ -1,4 +1,7 @@
-(setq default-frame-alist '((undecorated . t)))
+(setq default-frame-alist
+      '(
+        (undecorated . t)
+        (internal-border-width . 12)))
 
 ;; Env path
 (exec-path-from-shell-initialize)
@@ -55,14 +58,14 @@
                     :background "#f7f7f7"
                     :box '(:line-width 1 :color "#f7f7f7"))
 
-(set-frame-parameter nil 'internal-border-width 12)
 (setq frame-resize-pixelwise t)
 
 ;; show indicator for lines exceeding column 80
 (require 'whitespace)
 (setq whitespace-line-column 80)
-(setq whitespace-style '(face lines-tail))
+(setq whitespace-style '(face lines-tail trailing))
 (add-hook 'prog-mode-hook 'whitespace-mode)
+(add-hook 'before-save-hook 'whitespace-cleanup)
 
 ;; show column number in modeline
 (setq column-number-mode t)
@@ -162,10 +165,6 @@
                     :background "white"
                     :foreground "white"
                     :height 140)
-
-;; whitespace-cleanup-mode
-(require 'whitespace-cleanup-mode)
-(add-hook 'before-save-hook 'whitespace-cleanup)
 
 ;; Magit
 (require 'magit)
