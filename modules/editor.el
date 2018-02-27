@@ -34,6 +34,13 @@
 (dolist (charset '(han cjk-misc bopomofo symbol))
   (set-fontset-font (frame-parameter nil 'font) charset
                     (font-spec :family "PingFang SC" :weight 'normal :size 14)))
+
+;; highlight current line
+(global-hl-line-mode 1)
+(set-face-background 'hl-line "#f7f7f7")
+(set-face-foreground 'highlight nil)
+
+;; Common pretty symbols
 (global-prettify-symbols-mode +1)
 (defun common-pretty-symbols ()
   (setq prettify-symbols-alist
