@@ -43,3 +43,7 @@
 
 (electric-pair-mode 1)
 (global-flycheck-mode)
+
+(require 'which-key)
+(which-key-mode)
+(which-key-setup-side-window-right)

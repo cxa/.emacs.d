@@ -16,6 +16,7 @@
 (depends-on "find-file-in-project")
 (depends-on "neotree" :git "https://github.com/cxa/emacs-neotree.git")
 (depends-on "magit")
+(depends-on "which-key")
 
 ;; Markdown
 (depends-on "markdown-mode")
