@@ -1,8 +1,6 @@
-(setq erlang-root-dir "~/.kerl/20.2")
-(push (concat erlang-root-dir "/lib/tools-2.11.1/emacs")
-      load-path)
+(push "/usr/local/opt/erlang/lib/erlang/lib/tools-2.11.2/emacs" load-path)
 (require 'erlang-start)
-(setq erlang-man-root-dir (concat erlang-root-dir "/man"))
+(setq erlang-man-root-dir "/usr/local/opt/erlang/lib/erlang/man")
 (setq erlang-indent-level 2)
 
 (push "~/.emacs.d/distel/elisp" load-path)
