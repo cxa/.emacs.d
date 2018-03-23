@@ -1,21 +1,11 @@
 (require 'oasis-mode)
-(add-to-list 'auto-mode-alist '("/jbuild$" . lisp-mode))
 
 (let
     ((opam-share
       (ignore-errors (car (process-lines "opam" "config" "var" "share")))))
   (when (and opam-share (file-directory-p opam-share))
     (add-to-list 'load-path (expand-file-name "emacs/site-lisp" opam-share))
-
-    ;; Register Tuareg
-    (autoload 'tuareg-mode "tuareg" "Major mode for editing Caml code" t)
-    (autoload 'camldebug "camldebug" "Run the Caml debugger" t)
-    (autoload 'tuareg-imenu-set-imenu "tuareg-imenu"
-      "Configuration of imenu for tuareg" t)
-    (setq auto-mode-alist
-    (append '(("\\.ml[ily]?$" . tuareg-mode)
-        ("\\.topml$" . tuareg-mode))
-      auto-mode-alist))
+    (load "tuareg-site-file")
 
     ;; utop
     (autoload 'utop "utop" "Toplevel for OCaml" t)
@@ -33,8 +23,6 @@
                  (merlin-mode)
                  (setq tuareg-prettify-symbols-full t)
                  (setq indent-line-function 'ocp-indent-line)))
-
-    (add-hook 'caml-mode-hook 'merlin-mode t)
 
     ;; Make company aware of merlin
     (with-eval-after-load 'company

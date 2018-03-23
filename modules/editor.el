@@ -47,12 +47,15 @@
 ;; Common pretty symbols
 (global-prettify-symbols-mode +1)
 (defun common-pretty-symbols ()
-  (setq prettify-symbols-alist
-        '(
-          ("->" . 8594)
-          ("=>" . 8658)
-          ("<-" . 8592)
-          ("<=" . 8804))))
+  (setq-local
+   prettify-symbols-alist
+   (append
+    '(
+     ("->" . 8594)
+     ("=>" . 8658)
+     ("<-" . 8592)
+     ("<=" . 8804))
+    prettify-symbols-alist)))
 (add-hook 'prog-mode-hook 'common-pretty-symbols)
 
 (require 'all-the-icons)
