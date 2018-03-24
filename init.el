@@ -20,6 +20,7 @@
 (load "java")
 (load "rust")
 (load "erlang")
+(load "elixir")
 (load "docker")
 (load "yaml")
 
