@@ -79,6 +79,7 @@
 ;; Elixir
 (depends-on "elixir-mode")
 (depends-on "alchemist")
+(depends-on "elixir-format" :git "https://github.com/anildigital/mix-format.el.git")
 
 ;; Yaml
 (depends-on "yaml-mode" :git "https://github.com/yoshiki/yaml-mode.git")
