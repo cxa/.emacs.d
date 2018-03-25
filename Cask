@@ -80,6 +80,7 @@
 (depends-on "elixir-mode")
 (depends-on "alchemist")
 (depends-on "elixir-format" :git "https://github.com/anildigital/mix-format.el.git")
+(depends-on "flycheck-mix")
 
 ;; Yaml
 (depends-on "yaml-mode" :git "https://github.com/yoshiki/yaml-mode.git")
