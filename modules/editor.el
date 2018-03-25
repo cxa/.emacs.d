@@ -46,6 +46,7 @@
 
 ;; Common pretty symbols
 (global-prettify-symbols-mode +1)
+(setq prettify-symbols-unprettify-at-point 'right-edge)
 (defun common-pretty-symbols ()
   (setq-local
    prettify-symbols-alist
