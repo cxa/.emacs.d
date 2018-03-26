@@ -1,7 +1,21 @@
-(setq default-frame-alist
-      '(
-        (undecorated . t)
-        (internal-border-width . 12)))
+(add-to-list 'default-frame-alist (cons 'internal-border-width 12))
+(defun set-frame-size-according-to-resolution ()
+  (interactive)
+  (if window-system
+      (progn
+        (defconst width 90)
+        (add-to-list 'default-frame-alist (cons 'top 0))
+        (add-to-list
+         'default-frame-alist
+         (cons 'left
+               (/
+                (- (x-display-pixel-width) (* (frame-char-width) width)) 2)))
+        (add-to-list 'default-frame-alist (cons 'width width))
+        (add-to-list
+         'default-frame-alist
+         (cons 'height
+               (/ (x-display-pixel-height) (frame-char-height)))))))
+(set-frame-size-according-to-resolution)
 
 ;; Env path
 (exec-path-from-shell-initialize)
