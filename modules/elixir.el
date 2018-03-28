@@ -1,15 +1,23 @@
 (require 'elixir-mode)
 (require 'elixir-format)
 (require 'flycheck-mix)
+(require 'projectile)
 
 (setq elixir-format-mix-path "/usr/local/bin/mix")
 (add-to-list 'elixir-mode-hook 'alchemist-mode)
-(add-hook 'elixir-mode-hook
-          (lambda ()
-            (progn
-              (add-hook 'before-save-hook 'elixir-format-before-save)
-              (prettify-elixir-symbols)
-              (flycheck-mix-setup))))
+(add-hook
+ 'elixir-mode-hook
+ (lambda ()
+   (progn
+     (add-hook 'before-save-hook 'elixir-format-before-save)
+     (flycheck-mix-setup)
+     (prettify-elixir-symbols)
+     (if (projectile-project-p)
+         (setq
+          elixir-format-arguments
+          (list "--dot-formatter"
+                (concat (projectile-project-root) "/.formatter.exs")))
+       (setq elixir-format-arguments nil)))))
 
 (defun prettify-elixir-symbols ()
   (setq-local
@@ -30,7 +38,7 @@
       (">>" . (?\s (Br Bl -100 0) ?≻ (Br Bl -45 0) ?≻))
       ("++" . (?+ (Br Bl -35 0) ?+))
       ("--" . (?- (Br Bl -33 0) ?-))
-      ("|>" . #x2b9a)
+      ;; ("|>" . #x2b9a)
       ("not" . #x2757)
       ("in" . #x2208)
       ("not in" . #x2209)
