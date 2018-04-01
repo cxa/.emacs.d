@@ -73,6 +73,7 @@
 
 ;; Erlang
 (depends-on "company-distel")
+(depends-on "flycheck-rebar3")
 
 ;; Docker
 (depends-on "dockerfile-mode" :git "https://github.com/spotify/dockerfile-mode.git")

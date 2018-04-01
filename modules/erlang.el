@@ -1,11 +1,18 @@
-(push "/usr/local/opt/erlang/lib/erlang/lib/tools-2.11.2/emacs" load-path)
+(defvar
+  erlang-root-dir
+  (or (getenv "_KERL_ACTIVE_DIR") "/usr/local/opt/erlang/lib/erlang"))
+(push (concat erlang-root-dir "/lib/tools-2.11.2/emacs") load-path)
 (require 'erlang-start)
-(setq erlang-man-root-dir "/usr/local/opt/erlang/lib/erlang/man")
+(setq erlang-man-root-dir (concat erlang-root-dir "/man"))
 (setq erlang-indent-level 2)
 
 (push "~/.emacs.d/distel/elisp" load-path)
+
 (require 'distel)
 (distel-setup)
+
+(require 'flycheck-rebar3)
+(flycheck-rebar3-setup)
 
 (require 'company-distel)
 (with-eval-after-load 'company
@@ -29,7 +36,7 @@
 (add-hook 'erlang-mode-hook
           (lambda ()
             (flycheck-select-checker 'erlang-otp)
-                        (flycheck-mode)))
+            (flycheck-mode)))
 ;; prevent annoying hang-on-compile
 (defvar inferior-erlang-prompt-timeout t)
 ;; default node name to emacs@localhost
