@@ -13,6 +13,7 @@
 
 (require 'flycheck-rebar3)
 (flycheck-rebar3-setup)
+(add-hook 'erlang-mode-hook 'rebar-mode)
 
 (require 'company-distel)
 (with-eval-after-load 'company
