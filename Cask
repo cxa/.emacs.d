@@ -74,8 +74,6 @@
 
 ;; Erlang
 (depends-on "company-distel")
-(depends-on "flycheck-rebar3")
-(depends-on "rebar" :git "https://github.com/leoliu/rebar.el.git")
 
 ;; Docker
 (depends-on "dockerfile-mode" :git "https://github.com/spotify/dockerfile-mode.git")
