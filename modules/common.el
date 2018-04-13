@@ -42,7 +42,7 @@
 (global-set-key (kbd "C-,") 'prev-window)
 
 (electric-pair-mode 1)
-(global-flycheck-mode)
+;;(global-flycheck-mode)
 
 (require 'which-key)
 (which-key-mode)

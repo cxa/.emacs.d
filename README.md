@@ -32,11 +32,14 @@ echo 'KERL_CONFIGURE_OPTIONS="--disable-hipe --enable-smp-support --enable-threa
                         --enable-kernel-poll --without-odbc --enable-darwin-64bit"' > ~/.kerlrc
 kerl build 20.2 20.2
 kerl install 20.2 ~/.kerl/20.2
+
 cd ~/.emacs.d
 git submodule update --init
 cd distel
 make
 echo 'code:add_pathsz(["~/.emacs.d/distel/ebin"]).' >> ~/.erlang
+
+brew install syntaxerl
 ```
 
 Add `. ~/.kerl/20.2/activate` to `.zshrc` or `.bashrc`.

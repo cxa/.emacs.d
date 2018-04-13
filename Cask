@@ -9,6 +9,7 @@
 (depends-on "nlinum")
 (depends-on "company")
 (depends-on "flycheck")
+(depends-on "flymake-cursor")
 (depends-on "dash")
 (depends-on "dash-functional")
 (depends-on "request")

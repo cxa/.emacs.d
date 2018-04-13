@@ -1,19 +1,66 @@
 (defvar
   erlang-root-dir
   (or (getenv "_KERL_ACTIVE_DIR") "/usr/local/opt/erlang/lib/erlang"))
-(push (concat erlang-root-dir "/lib/tools-2.11.2/emacs") load-path)
+(push
+ (car (file-expand-wildcards (concat erlang-root-dir "/lib/tools-*/emacs")))
+ load-path)
 (require 'erlang-start)
 (setq erlang-man-root-dir (concat erlang-root-dir "/man"))
 (setq erlang-indent-level 2)
+
+; define auto erlang mode for these files/extensions.
+(add-to-list 'auto-mode-alist '(".*\\.app\\'"     . erlang-mode))
+(add-to-list 'auto-mode-alist '(".*app\\.src\\'"  . erlang-mode))
+(add-to-list 'auto-mode-alist '(".*\\.config\\'"  . erlang-mode))
+(add-to-list 'auto-mode-alist '(".*\\.rel\\'"     . erlang-mode))
+(add-to-list 'auto-mode-alist '(".*\\.script\\'"  . erlang-mode))
+(add-to-list 'auto-mode-alist '(".*\\.escript\\'" . erlang-mode))
+(add-to-list 'auto-mode-alist '(".*\\.es\\'"      . erlang-mode))
+(add-to-list 'auto-mode-alist '(".*\\.xrl\\'"     . erlang-mode))
+(add-to-list 'auto-mode-alist '(".*\\.yrl\\'"     . erlang-mode))
+; add include directory to default compile path.
+(defvar erlang-compile-extra-opts
+  '(bin_opt_info debug_info (i . "../include") (i . "../deps") (i . "../../") (i . "../../../deps")))
+
+; define where put beam files.
+(setq erlang-compile-outdir "../ebin")
+
+;;;----------------------------------------
+;;; flymake
+;;;----------------------------------------
+
+(require 'flymake)
+(require 'flymake-cursor) ; http://www.emacswiki.org/emacs/FlymakeCursor
+(setq flymake-log-level 3)
+
+(defun flymake-compile-script-path (path)
+  (let* ((temp-file (flymake-init-create-temp-buffer-copy
+                     'flymake-create-temp-inplace))
+         (local-file (file-relative-name
+                      temp-file
+                      (file-name-directory buffer-file-name))))
+    (list path (list local-file))))
+
+(defun flymake-syntaxerl ()
+  (flymake-compile-script-path "/usr/local/bin/syntaxerl"))
+
+; see /usr/local/lib/erlang/lib/tools-<Ver>/emacs/erlang-flymake.erl
+(defun erlang-flymake-only-on-save ()
+  "Trigger flymake only when the buffer is saved (disables syntax
+check on newline and when there are no changes)."
+  (interactive)
+  ;; There doesn't seem to be a way of disabling this; set to the
+  ;; largest int available as a workaround (most-positive-fixnum
+  ;; equates to 8.5 years on my machine, so it ought to be enough ;-) )
+  (setq flymake-no-changes-timeout most-positive-fixnum)
+  (setq flymake-start-syntax-check-on-newline nil))
+
+(erlang-flymake-only-on-save)
 
 (push "~/.emacs.d/distel/elisp" load-path)
 
 (require 'distel)
 (distel-setup)
-
-(require 'flycheck-rebar3)
-(flycheck-rebar3-setup)
-(add-hook 'erlang-mode-hook 'rebar-mode)
 
 (require 'company-distel)
 (with-eval-after-load 'company
@@ -22,17 +69,7 @@
           (lambda ()
             (setq company-backends '(company-distel))))
 
-(require 'flycheck)
-(flycheck-define-checker
-    erlang-otp
-  "An Erlang syntax checker using the Erlang interpreter."
-  :modes (erlang-mode)
-  :command ("erlc" "-o" temporary-directory "-Wall"
-            "-I" "../include" "-I" "../../include"
-            "-I" "../../../include" source)
-  :error-patterns
-  ((warning line-start (file-name) ":" line ": Warning:" (message) line-end)
-   (error line-start (file-name) ":" line ": " (message) line-end)))
+
 
 ;; https://github.com/bodil/ohai-emacs/blob/master/modules/ohai-erlang.el
 (defun stripwhite (str)
@@ -82,9 +119,33 @@
 
 (add-hook 'erlang-mode-hook
           (lambda ()
-            (flycheck-select-checker 'erlang-otp)
-            (flycheck-mode)
-            (local-set-key "\C-ce" 'erlang-export)))
+            (imenu-add-to-menubar "Imenu")
+            (local-set-key "\C-ce" 'erlang-export)
+            (add-to-list 'flymake-allowed-file-name-masks
+                         '("\\.erl\\'"     flymake-syntaxerl))
+            (add-to-list 'flymake-allowed-file-name-masks
+                         '("\\.hrl\\'"     flymake-syntaxerl))
+            (add-to-list 'flymake-allowed-file-name-masks
+                         '("\\.xrl\\'"     flymake-syntaxerl))
+            (add-to-list 'flymake-allowed-file-name-masks
+                         '("\\.yrl\\'"     flymake-syntaxerl))
+            (add-to-list 'flymake-allowed-file-name-masks
+                         '("\\.app\\'"     flymake-syntaxerl))
+            (add-to-list 'flymake-allowed-file-name-masks
+                         '("\\.app.src\\'" flymake-syntaxerl))
+            (add-to-list 'flymake-allowed-file-name-masks
+                         '("\\.config\\'"  flymake-syntaxerl))
+            (add-to-list 'flymake-allowed-file-name-masks
+                         '("\\.rel\\'"     flymake-syntaxerl))
+            (add-to-list 'flymake-allowed-file-name-masks
+                         '("\\.script\\'"  flymake-syntaxerl))
+            (add-to-list 'flymake-allowed-file-name-masks
+                         '("\\.escript\\'" flymake-syntaxerl))
+            (add-to-list 'flymake-allowed-file-name-masks
+                         '("\\.es\\'"      flymake-syntaxerl))
+
+     ;; should be the last.
+     (flymake-mode 1)))
 ;; prevent annoying hang-on-compile
 (defvar inferior-erlang-prompt-timeout t)
 ;; default node name to emacs@localhost
