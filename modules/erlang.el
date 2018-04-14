@@ -25,10 +25,7 @@
 ; define where put beam files.
 (setq erlang-compile-outdir "../ebin")
 
-;;;----------------------------------------
 ;;; flymake
-;;;----------------------------------------
-
 (require 'flymake)
 (require 'flymake-cursor) ; http://www.emacswiki.org/emacs/FlymakeCursor
 (setq flymake-log-level 3)
@@ -54,22 +51,11 @@ check on newline and when there are no changes)."
   ;; equates to 8.5 years on my machine, so it ought to be enough ;-) )
   (setq flymake-no-changes-timeout most-positive-fixnum)
   (setq flymake-start-syntax-check-on-newline nil))
-
 (erlang-flymake-only-on-save)
 
-(push "~/.emacs.d/distel/elisp" load-path)
-
-(require 'distel)
-(distel-setup)
-
-(require 'company-distel)
-(with-eval-after-load 'company
-  (add-to-list 'company-backends 'company-distel))
-(add-hook 'erlang-mode-hook
-          (lambda ()
-            (setq company-backends '(company-distel))))
-
-
+;; EDTS
+(add-to-list 'url-proxy-services '("no_proxy" . "^0.*"))
+(require 'edts-start)
 
 ;; https://github.com/bodil/ohai-emacs/blob/master/modules/ohai-erlang.el
 (defun stripwhite (str)
@@ -143,19 +129,5 @@ check on newline and when there are no changes)."
                          '("\\.escript\\'" flymake-syntaxerl))
             (add-to-list 'flymake-allowed-file-name-masks
                          '("\\.es\\'"      flymake-syntaxerl))
+            (flymake-mode 1)))
 
-     ;; should be the last.
-     (flymake-mode 1)))
-;; prevent annoying hang-on-compile
-(defvar inferior-erlang-prompt-timeout t)
-;; default node name to emacs@localhost
-(setq inferior-erlang-machine-options '("-sname" "emacs"))
-;; tell distel to default to that node
-(setq erl-nodename-cache
-      (make-symbol
-       (concat
-        "emacs@"
-        ;; Mac OS X uses "name.local" instead of "name", this should work
-        ;; pretty much anywhere without having to muck with NetInfo
-        ;; ... but I only tested it on Mac OS X.
-                (car (split-string (shell-command-to-string "hostname"))))))

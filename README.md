@@ -27,22 +27,11 @@ Install [eclim](http://eclim.org) to `/Applications/Eclipse.app/Contents/Eclipse
 ## For Erlang
 
 ``` sh
-brew install kerl
-echo 'KERL_CONFIGURE_OPTIONS="--disable-hipe --enable-smp-support --enable-threads
-                        --enable-kernel-poll --without-odbc --enable-darwin-64bit"' > ~/.kerlrc
-kerl build 20.2 20.2
-kerl install 20.2 ~/.kerl/20.2
-
-cd ~/.emacs.d
-git submodule update --init
-cd distel
+cd ~/.emacs.d/.cask/_ver_/elpa/edts-*
 make
-echo 'code:add_pathsz(["~/.emacs.d/distel/ebin"]).' >> ~/.erlang
 
 brew install syntaxerl
 ```
-
-Add `. ~/.kerl/20.2/activate` to `.zshrc` or `.bashrc`.
 
 ## Personal macOS stuff
 
