@@ -14,6 +14,7 @@
     (add-hook 'tuareg-mode-hook 'utop-minor-mode)
 
     ;; Register Merlin
+    (setq merlin-ac-setup nil)
     (autoload 'merlin-mode "merlin" nil t nil)
 
     ;; Automatically start it in OCaml buffers
