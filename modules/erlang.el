@@ -105,6 +105,7 @@ check on newline and when there are no changes)."
 
 (add-hook 'erlang-mode-hook
           (lambda ()
+            (company-mode 0)
             (imenu-add-to-menubar "Imenu")
             (local-set-key "\C-ce" 'erlang-export)
             (add-to-list 'flymake-allowed-file-name-masks
