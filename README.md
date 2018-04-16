@@ -8,12 +8,17 @@ My relocatable Emacs config with [Cask](https://github.com/cask/cask).
 
 Install Cask if you haven't, clone and run `cask`.
 
+### `cask` gotchas
+
+`cask` is rely on [package-build](https://github.com/melpa/package-build.git), which breaks things frequently after updated from ELPA. Manually download a stable version from github repo releases and replace related el files.
+
+And don't forget to remove `cask` tmp dir, which can be retrived from evaling `(temporary-file-directory)` in `*scratch*`.
+
 ## External tools
 
 ```sh
 opam install merlin tuareg ocp-indent
 npm i -g tern prettier
-
 ```
 
 ### For Java
@@ -26,7 +31,7 @@ Install [eclim](http://eclim.org) to `/Applications/Eclipse.app/Contents/Eclipse
 
 ## For Erlang
 
-``` sh
+```sh
 cd ~/.emacs.d/.cask/_ver_/elpa/edts-*
 make
 
