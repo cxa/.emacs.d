@@ -90,7 +90,7 @@ check on newline and when there are no changes)."
 (defun erlang-move-to-export-insertion ()
   (interactive)
     (goto-char (point-max))
-    (if (search-backward-regexp "^-export" 0 t)
+    (if (search-backward-regexp "^-export(.+)\\.$" 0 t)
     (end-of-line)
       (search-backward-regexp "^-" 0 t)
       (end-of-line)))
@@ -101,7 +101,7 @@ check on newline and when there are no changes)."
   (save-excursion
     (erlang-move-to-export-insertion)
     (newline)
-    (insert (format "-export ([%s])." fun-arity))))
+    (insert (format "-export([%s])." fun-arity))))
 
 (add-hook 'erlang-mode-hook
           (lambda ()
