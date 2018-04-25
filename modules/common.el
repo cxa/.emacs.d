@@ -47,3 +47,9 @@
 (require 'which-key)
 (which-key-mode)
 (which-key-setup-side-window-right-bottom)
+
+;; YASnippets
+(require 'yasnippet)
+(setq yas-snippet-dirs
+      '("~/.emacs.d/snippets"))
+(yas-reload-all)

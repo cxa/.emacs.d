@@ -19,6 +19,7 @@
 (depends-on "magit")
 (depends-on "which-key")
 (depends-on "projectile")
+(depends-on "yasnippet")
 
 ;; Markdown
 (depends-on "markdown-mode")

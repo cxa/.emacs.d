@@ -130,5 +130,6 @@ check on newline and when there are no changes)."
                          '("\\.escript\\'" flymake-syntaxerl))
             (add-to-list 'flymake-allowed-file-name-masks
                          '("\\.es\\'"      flymake-syntaxerl))
-            (flymake-mode 1)))
+            (flymake-mode 1)
+            (yas-minor-mode)))
 
