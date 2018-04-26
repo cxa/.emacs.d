@@ -78,9 +78,24 @@ check on newline and when there are no changes)."
     (newline)
     (insert (format "-export([%s])." fun-arity))))
 
+(defun prettify-symbols ()
+  (setq-local
+   prettify-symbols-alist
+   (append
+    '(("->" . ?→)
+      ("=>" . ?⇒)
+      ("<-" . ?←)
+      ("<=" . ?⇐)
+      (">=" . ?≥)
+      ("=<" . ?≤)
+      ("=/=" . ?≠)
+      ("fun" . ?ƒ))
+    prettify-symbols-alist)))
+
 (add-hook
  'erlang-mode-hook
  (lambda ()
+   (prettify-symbols)
    (company-mode 0)
    (imenu-add-to-menubar "Imenu")
    (local-set-key "\C-ce" 'erlang-export)

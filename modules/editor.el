@@ -61,18 +61,6 @@
 ;; Common pretty symbols
 (global-prettify-symbols-mode +1)
 (setq prettify-symbols-unprettify-at-point 'right-edge)
-(defun common-pretty-symbols ()
-  (setq-local
-   prettify-symbols-alist
-   (append
-    '(
-     ("->" . 8594)
-     ("=>" . 8658)
-     ("<-" . 8592)
-     ("<=" . 8804))
-    prettify-symbols-alist)))
-(add-hook 'prog-mode-hook 'common-pretty-symbols)
-(add-hook 'erlang-mode-hook 'common-pretty-symbols)
 
 (require 'all-the-icons)
 (setq all-the-icons-scale-factor 0.6)
