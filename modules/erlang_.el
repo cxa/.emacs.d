@@ -1,31 +1,5 @@
-(defvar
-  erlang-root-dir
-  (or (getenv "_KERL_ACTIVE_DIR") "/usr/local/opt/erlang/lib/erlang"))
-(push
- (car (file-expand-wildcards (concat erlang-root-dir "/lib/tools-*/emacs")))
- load-path)
-(require 'erlang-start)
-(setq erlang-man-root-dir (concat erlang-root-dir "/man"))
-(setq erlang-indent-level 2)
+;;; named to erlang_.erl to avoid conflicts
 
-; define auto erlang mode for these files/extensions.
-(add-to-list 'auto-mode-alist '(".*\\.app\\'"     . erlang-mode))
-(add-to-list 'auto-mode-alist '(".*app\\.src\\'"  . erlang-mode))
-(add-to-list 'auto-mode-alist '(".*\\.config\\'"  . erlang-mode))
-(add-to-list 'auto-mode-alist '(".*\\.rel\\'"     . erlang-mode))
-(add-to-list 'auto-mode-alist '(".*\\.script\\'"  . erlang-mode))
-(add-to-list 'auto-mode-alist '(".*\\.escript\\'" . erlang-mode))
-(add-to-list 'auto-mode-alist '(".*\\.es\\'"      . erlang-mode))
-(add-to-list 'auto-mode-alist '(".*\\.xrl\\'"     . erlang-mode))
-(add-to-list 'auto-mode-alist '(".*\\.yrl\\'"     . erlang-mode))
-; add include directory to default compile path.
-(defvar erlang-compile-extra-opts
-  '(bin_opt_info debug_info (i . "../include") (i . "../deps") (i . "../../") (i . "../../../deps")))
-
-; define where put beam files.
-(setq erlang-compile-outdir "../ebin")
-
-;;; flymake
 (require 'flymake)
 (require 'flymake-cursor) ; http://www.emacswiki.org/emacs/FlymakeCursor
 (setq flymake-log-level 3)
@@ -54,6 +28,7 @@ check on newline and when there are no changes)."
 (erlang-flymake-only-on-save)
 
 ;; EDTS
+(require 'erlang-start)
 (add-to-list 'url-proxy-services '("no_proxy" . "^0.*"))
 (require 'edts-start)
 

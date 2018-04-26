@@ -72,6 +72,7 @@
      ("<=" . 8804))
     prettify-symbols-alist)))
 (add-hook 'prog-mode-hook 'common-pretty-symbols)
+(add-hook 'erlang-mode-hook 'common-pretty-symbols)
 
 (require 'all-the-icons)
 (setq all-the-icons-scale-factor 0.6)

@@ -25,9 +25,5 @@
                  (setq tuareg-prettify-symbols-full t)
                  (setq indent-line-function 'ocp-indent-line)))
 
-    ;; Make company aware of merlin
-    (with-eval-after-load 'company
-      (add-to-list 'company-backends 'merlin-company-backend))
-
     ;; Use opam switch to lookup ocamlmerlin binary
     (setq merlin-command 'opam)))

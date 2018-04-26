@@ -74,6 +74,7 @@
 (depends-on "flycheck-rust")
 
 ;; Erlang
+(depends-on "erlang")
 (depends-on "edts")
 
 ;; Docker
