@@ -103,33 +103,33 @@ check on newline and when there are no changes)."
     (newline)
     (insert (format "-export([%s])." fun-arity))))
 
-(add-hook 'erlang-mode-hook
-          (lambda ()
-            (company-mode 0)
-            (imenu-add-to-menubar "Imenu")
-            (local-set-key "\C-ce" 'erlang-export)
-            (add-to-list 'flymake-allowed-file-name-masks
-                         '("\\.erl\\'"     flymake-syntaxerl))
-            (add-to-list 'flymake-allowed-file-name-masks
-                         '("\\.hrl\\'"     flymake-syntaxerl))
-            (add-to-list 'flymake-allowed-file-name-masks
-                         '("\\.xrl\\'"     flymake-syntaxerl))
-            (add-to-list 'flymake-allowed-file-name-masks
-                         '("\\.yrl\\'"     flymake-syntaxerl))
-            (add-to-list 'flymake-allowed-file-name-masks
-                         '("\\.app\\'"     flymake-syntaxerl))
-            (add-to-list 'flymake-allowed-file-name-masks
-                         '("\\.app.src\\'" flymake-syntaxerl))
-            (add-to-list 'flymake-allowed-file-name-masks
-                         '("\\.config\\'"  flymake-syntaxerl))
-            (add-to-list 'flymake-allowed-file-name-masks
-                         '("\\.rel\\'"     flymake-syntaxerl))
-            (add-to-list 'flymake-allowed-file-name-masks
-                         '("\\.script\\'"  flymake-syntaxerl))
-            (add-to-list 'flymake-allowed-file-name-masks
-                         '("\\.escript\\'" flymake-syntaxerl))
-            (add-to-list 'flymake-allowed-file-name-masks
-                         '("\\.es\\'"      flymake-syntaxerl))
-            (flymake-mode 1)
-            (yas-minor-mode)))
+(add-hook
+ 'erlang-mode-hook
+ (lambda ()
+   (company-mode 0)
+   (imenu-add-to-menubar "Imenu")
+   (local-set-key "\C-ce" 'erlang-export)
+   (add-to-list 'flymake-allowed-file-name-masks
+                '("\\.erl\\'"     flymake-syntaxerl))
+   (add-to-list 'flymake-allowed-file-name-masks
+                '("\\.hrl\\'"     flymake-syntaxerl))
+   (add-to-list 'flymake-allowed-file-name-masks
+                '("\\.xrl\\'"     flymake-syntaxerl))
+   (add-to-list 'flymake-allowed-file-name-masks
+                '("\\.yrl\\'"     flymake-syntaxerl))
+   (add-to-list 'flymake-allowed-file-name-masks
+                '("\\.app\\'"     flymake-syntaxerl))
+   (add-to-list 'flymake-allowed-file-name-masks
+                '("\\.app.src\\'" flymake-syntaxerl))
+   (add-to-list 'flymake-allowed-file-name-masks
+                '("\\.config\\'"  flymake-syntaxerl))
+   (add-to-list 'flymake-allowed-file-name-masks
+                '("\\.rel\\'"     flymake-syntaxerl))
+   (add-to-list 'flymake-allowed-file-name-masks
+                '("\\.script\\'"  flymake-syntaxerl))
+   (add-to-list 'flymake-allowed-file-name-masks
+                '("\\.escript\\'" flymake-syntaxerl))
+   (add-to-list 'flymake-allowed-file-name-masks
+                '("\\.es\\'"      flymake-syntaxerl))
+   (flymake-mode 1)))
 
