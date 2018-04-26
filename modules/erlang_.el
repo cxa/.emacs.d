@@ -29,6 +29,7 @@ check on newline and when there are no changes)."
 
 ;; EDTS
 (require 'erlang-start)
+(setq erlang-indent-level 2)
 (add-to-list 'url-proxy-services '("no_proxy" . "^0.*"))
 (require 'edts-start)
 
