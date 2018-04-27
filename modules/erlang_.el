@@ -27,9 +27,11 @@ check on newline and when there are no changes)."
   (setq flymake-start-syntax-check-on-newline nil))
 (erlang-flymake-only-on-save)
 
-;; EDTS
 (require 'erlang-start)
+(require 'nitrogen-mode)
 (setq erlang-indent-level 2)
+
+;; EDTS
 (add-to-list 'url-proxy-services '("no_proxy" . "^0.*"))
 (require 'edts-start)
 

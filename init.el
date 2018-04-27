@@ -7,6 +7,7 @@
 (cask-initialize)
 
 (add-to-list 'load-path "~/.emacs.d/modules")
+(add-to-list 'load-path "~/.emacs.d/vendor")
 
 (load "common")
 (load "editor")
