@@ -2,7 +2,8 @@
 (package-initialize)
 
 (if (not (require 'cask "/usr/local/share/emacs/site-lisp/cask/cask.el" t))
-  (require 'cask "~/.cask/cask.el"))
+    (if (not (require 'cask "/usr/share/emacs/site-lisp/cask/cask.el" t))
+	(require 'cask "~/.cask/cask.el")))
 
 (cask-initialize)
 
