@@ -54,7 +54,7 @@
   (set-fontset-font (frame-parameter nil 'font) charset
                     (font-spec :family "PingFang SC"
                                :weight 'normal
-                               :size (if is-x 24 14))))
+                               :size (if is-x 26 14))))
 
 ;; highlight current line
 (global-hl-line-mode 1)
@@ -111,6 +111,9 @@
 (when (memq window-system '(mac ns))
   (setq mac-option-modifier 'alt)
   (setq mac-command-modifier 'meta))
+
+(when is-x
+  (setq x-super-keysym 'meta))
 
 ;; Backups
 (setq make-backup-files nil)
