@@ -1,0 +1,3 @@
+#name : [%raw {|require('')|}]
+# --
+[%raw {|require('$1')|}]$0
