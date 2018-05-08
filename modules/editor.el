@@ -1,4 +1,13 @@
-(add-to-list 'default-frame-alist (cons 'internal-border-width 12))
+(add-to-list 'default-frame-alist '(internal-border-width . 12))
+(add-to-list 'default-frame-alist '(name . nil))
+
+(setq frame-title-format nil)
+
+(when (memq window-system '(mac ns))
+  (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+  (add-to-list 'default-frame-alist '(ns-appearance . 'nil))
+  (setq ns-use-proxy-icon nil))
+
 (defun set-frame-size-according-to-resolution ()
   (interactive)
   (if window-system
@@ -35,9 +44,6 @@
 (and (fboundp 'tooltip-mode)    (fboundp 'x-show-tip) (tooltip-mode -1))
 (setq-default word-wrap t)
 
-;; `defaults write org.gnu.Emacs HideDocumentIcon YES`
-;; to remove title icon for mac
-(setq frame-title-format "")
 (global-set-key (kbd "C-M-w") 'delete-frame)
 (global-set-key (kbd "C-M-S-w") 'delete-other-frames)
 (global-set-key (kbd "M-n") 'new-frame)
