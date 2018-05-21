@@ -55,12 +55,12 @@
 ;; Editor Font
 (set-face-attribute 'default nil
                     :family "Courier Prime Sans"
-                    :height 160)
+                    :height 150)
 (dolist (charset '(han cjk-misc bopomofo symbol))
   (set-fontset-font (frame-parameter nil 'font) charset
                     (font-spec :family "PingFang SC"
                                :weight 'normal
-                               :size (if is-x 26 14))))
+                               :size (if is-x 24 13))))
 
 ;; highlight current line
 (global-hl-line-mode 1)
