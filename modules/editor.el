@@ -1,12 +1,12 @@
 (add-to-list 'default-frame-alist '(internal-border-width . 12))
-(add-to-list 'default-frame-alist '(name . nil))
-
-(setq frame-title-format nil)
+;;(add-to-list 'default-frame-alist '(undecorated . t))
+(setq-default frame-title-format nil)
 
 (when (memq window-system '(mac ns))
   (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
-  (add-to-list 'default-frame-alist '(ns-appearance . 'nil))
-  (setq ns-use-proxy-icon nil))
+  (add-to-list 'default-frame-alist '(ns-appearance . light))
+  (setq ns-use-proxy-icon nil)
+  (run-with-idle-timer 0.5 t (lambda () (set-frame-name " "))))
 
 (defun set-frame-size-according-to-resolution ()
   (interactive)
