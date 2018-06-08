@@ -1,0 +1,4 @@
+#name : #dd -> #[derive(Debug)]
+# --
+#[derive(Debug)]
+$0

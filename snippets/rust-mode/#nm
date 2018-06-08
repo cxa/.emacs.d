@@ -1,0 +1,4 @@
+#name : #nm -> #[no_mangle]
+# --
+#[no_mangle]
+$0
