@@ -1,0 +1,3 @@
+#name : GHC extension
+# --
+{-# $0 #-}

@@ -1,0 +1,3 @@
+#name : GHC extension for LANGUAGE
+# --
+{-# LANGUAGE $0 #-}
