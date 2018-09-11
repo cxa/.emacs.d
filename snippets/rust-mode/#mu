@@ -1,0 +1,4 @@
+#name : #mu -> #[macro_use]
+# --
+#[macro_use]
+$0
