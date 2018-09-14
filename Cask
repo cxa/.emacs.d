@@ -57,6 +57,10 @@
 (depends-on "company-tern")
 (depends-on "prettier-js")
 
+;; TypeScript
+(depends-on "typescript-mode")
+(depends-on "tide")
+
 ;; Java
 (depends-on "eclim")
 (depends-on "gradle-mode")
