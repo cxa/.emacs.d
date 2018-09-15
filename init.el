@@ -19,7 +19,7 @@
 (load "reason")
 (load "fsharp")
 (load "web")
-(load "ts")
+(load "typescript")
 (load "java")
 (load "rust")
 (load "erlang_")

@@ -1,3 +1,25 @@
+(defvar js-prettify-symbols-alist
+  '(("===" . ?≡)
+    ("!==" . ?≢)
+    (">=" . ?≥)
+    ("<=" . ?≤)
+    ("&&" . ?∧)
+    ("||" . ?∨)
+    ("=>" . ?⇒)
+    ("true" . #x1d54b)
+    ("false" . #x1d53d)
+    ("for" . "∀")
+    ("class" . ?𝑪)
+    ("function" . ?𝒇)
+    ("null" . ?∅)
+    ("undefined" . ?⊥)))
+
+(defun ts-hook ()
+  (progn (setq-local
+          prettify-symbols-alist
+          (append prettify-symbols-alist js-prettify-symbols-alist))))
+(add-hook 'typescript-mode-hook 'ts-hook)
+
 (defun setup-tide-mode ()
   (interactive)
   (tide-setup)

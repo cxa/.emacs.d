@@ -25,11 +25,11 @@
     ("=>" . ?⇒)
     ("true" . #x1d54b)
     ("false" . #x1d53d)
-    ("function" . ?ℱ)
+    ("for" . "∀")
+    ("class" . ?𝑪)
+    ("function" . ?𝒇)
     ("null" . ?∅)
-    ("undefined" . ?⊥)
-    ("import" . ?𝜾)
-    ("require" . ?ρ)))
+    ("undefined" . ?⊥)))
 
 (defun enable-minor-mode (my-pair)
   "Enable minor mode if filename match the regexp.  MY-PAIR is a cons cell (regexp . minor-mode)."
