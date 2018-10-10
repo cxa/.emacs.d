@@ -52,15 +52,20 @@
 (setq initial-buffer-choice 'recentf-open-files)
 
 (setq-local is-x (eq window-system 'x))
+(setq-local is-mac (memq window-system '(mac ns)))
 ;; Editor Font
 (set-face-attribute 'default nil
-                    :family "Courier Prime Sans"
-                    :height 150)
-(dolist (charset '(han cjk-misc bopomofo symbol))
+                    :family "Input"
+                    :height 140)
+(when is-mac
+  (set-fontset-font t 'symbol
+                    (font-spec :family "Apple Color Emoji")
+                    nil 'prepend))
+(dolist (charset '(han cjk-misc bopomofo))
   (set-fontset-font (frame-parameter nil 'font) charset
                     (font-spec :family "PingFang SC"
                                :weight 'normal
-                               :size (if is-x 24 13))))
+                               :size (if is-x 24 14))))
 
 ;; highlight current line
 (global-hl-line-mode 1)
@@ -114,7 +119,7 @@
 (set-face-foreground 'vertical-border (face-background 'vertical-border))
 
 ;; Key remap
-(when (memq window-system '(mac ns))
+(when is-mac
   (setq mac-option-modifier 'alt)
   (setq mac-command-modifier 'meta))
 
