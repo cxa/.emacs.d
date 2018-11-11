@@ -21,6 +21,12 @@ opam install merlin tuareg ocp-indent
 npm i -g tern prettier
 ```
 
+### For C/C++
+
+``` sh
+brew install llvm
+```
+
 ### For Java
 
 ```sh

@@ -20,6 +20,9 @@
 (depends-on "which-key")
 (depends-on "projectile")
 (depends-on "yasnippet")
+(depends-on "company-lsp")
+(depends-on "lsp-mode")
+(depends-on "lsp-ui")
 
 ;; Markdown
 (depends-on "markdown-mode")
@@ -47,8 +50,11 @@
 (depends-on "company-sourcekit")
 (depends-on "flycheck-swift")
 
-;; C / ObjC
+;; C / C++ / ObjC
 (depends-on "company-c-headers")
+(depends-on "clang-format")
+(depends-on "modern-cpp-font-lock")
+(depends-on "lsp-clangd")
 
 ;; Web
 (depends-on "web-mode")

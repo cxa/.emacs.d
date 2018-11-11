@@ -13,6 +13,7 @@
 (load "common")
 (load "editor")
 (load "markdown")
+(load "c_cpp")
 (load "haskell")
 (load "ocaml")
 (load "standardml")
