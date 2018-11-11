@@ -1,0 +1,4 @@
+#name : -export
+# --
+-export([$1]).
+$0
