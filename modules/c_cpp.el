@@ -4,3 +4,8 @@
 (when (equal system-type 'darwin)
   (setq lsp-clangd-executable "/usr/local/opt/llvm/bin/clangd"))
 (add-hook 'c++-mode-hook #'lsp-clangd-c++-enable)
+
+(defun my-c++-mode-hook ()
+  (setq c-basic-offset 2)
+  (c-set-offset 'substatement-open 0))
+(add-hook 'c++-mode-hook 'my-c++-mode-hook)
