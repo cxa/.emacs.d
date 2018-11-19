@@ -98,3 +98,6 @@
 
 ;; Yaml
 (depends-on "yaml-mode" :git "https://github.com/yoshiki/yaml-mode.git")
+
+;; PowerShell
+(depends-on "powershell")
