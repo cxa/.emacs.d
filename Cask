@@ -101,3 +101,6 @@
 
 ;; PowerShell
 (depends-on "powershell")
+
+;; SQL
+(depends-on "sql-indent")

@@ -27,6 +27,7 @@
 (load "elixir")
 (load "docker")
 (load "yaml")
+(load "sql_")
 
 (when (equal system-type 'darwin)
   (load "swift")
