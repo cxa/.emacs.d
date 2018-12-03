@@ -54,3 +54,5 @@
       '("~/.emacs.d/snippets"))
 (yas-global-mode 1)
 
+;; view large file
+(require 'vlf-setup)

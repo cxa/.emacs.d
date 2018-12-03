@@ -23,6 +23,7 @@
 (depends-on "company-lsp")
 (depends-on "lsp-mode")
 (depends-on "lsp-ui")
+(depends-on "vlf" :git "https://github.com/m00natic/vlfi.git")
 
 ;; Markdown
 (depends-on "markdown-mode")
