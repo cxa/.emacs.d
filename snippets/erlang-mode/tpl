@@ -1,0 +1,21 @@
+#name : erlang concurrent template
+# --
+-module(`(file-name-nondirectory (file-name-sans-extension (or (buffer-file-name) (buffer-name))))`).
+-compile(export_all).
+
+start() ->
+  spawn(?MODULE, loop, []).
+
+rpc(Pid, Req) ->
+  Pid ! {self(), Req},
+  receive
+    {Pid, Resp} -> Resp
+  end.
+
+loop() ->
+  receive
+    Any ->
+      io:format("Received:~p~n", [Any]),
+      loop()
+  end.
+$0
