@@ -12,7 +12,7 @@
   (interactive)
   (if window-system
       (progn
-        (defconst width 90)
+        (defconst width 128)
         (add-to-list 'default-frame-alist (cons 'top 0))
         (add-to-list
          'default-frame-alist
@@ -92,9 +92,9 @@
 
 (setq frame-resize-pixelwise t)
 
-;; show indicator for lines exceeding column 80
+;; show indicator for lines exceeding column 100
 (require 'whitespace)
-(setq whitespace-line-column 80)
+(setq whitespace-line-column 100)
 (setq whitespace-style '(face lines-tail trailing))
 (add-hook 'prog-mode-hook 'whitespace-mode)
 (add-hook 'before-save-hook 'whitespace-cleanup)
