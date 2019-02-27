@@ -55,7 +55,6 @@
 (depends-on "company-c-headers")
 (depends-on "clang-format")
 (depends-on "modern-cpp-font-lock")
-(depends-on "lsp-clangd")
 
 ;; Web
 (depends-on "web-mode")
