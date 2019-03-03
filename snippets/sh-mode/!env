@@ -1,0 +1,4 @@
+#name : #!/usr/bin/env $SHELL
+# key: !env
+# --
+#!/usr/bin/env ${1:`(file-name-nondirectory (getenv "SHELL"))`}
