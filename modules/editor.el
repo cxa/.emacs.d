@@ -46,7 +46,7 @@
 
 (global-set-key (kbd "C-M-w") 'delete-frame)
 (global-set-key (kbd "C-M-S-w") 'delete-other-frames)
-(global-set-key (kbd "M-n") 'new-frame)
+(global-set-key (kbd "M-n") 'make-frame)
 (global-set-key (kbd "M-`") 'other-frame)
 
 (setq initial-buffer-choice 'recentf-open-files)
