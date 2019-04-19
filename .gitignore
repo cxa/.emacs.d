@@ -10,4 +10,5 @@ smex-items
 !snippets/**/\#*
 ido*
 session*
-edts
+edts/
+transient/

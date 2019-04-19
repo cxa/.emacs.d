@@ -77,8 +77,9 @@
 (setq prettify-symbols-unprettify-at-point 'right-edge)
 
 (require 'all-the-icons)
-(setq all-the-icons-scale-factor 0.6)
-;; Mode line
+(setq all-the-icons-scale-factor 0.8)
+
+;; Modeline appearance
 (set-face-attribute 'mode-line nil
                     :weight 'bold
                     :foreground "#999999"
@@ -172,12 +173,7 @@
 (setq neo-force-change-root t)
 (setq neo-show-slash-for-folder nil)
 (setq neo-mode-line-type 'custom)
-(require 'nyan-mode)
-(setq nyan-minimum-window-width neo-window-width)
-(setq neo-mode-line-custom-format
-      (list
-       '(:eval (list (nyan-create)))
-       ))
+(setq neo-mode-line-custom-format 'none)
 (defun disable-nlinum (_unused) (nlinum-mode -1))
 (add-hook 'neo-after-create-hook 'disable-nlinum)
 

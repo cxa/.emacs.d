@@ -3,7 +3,6 @@
 
 ;; Commons
 (depends-on "all-the-icons" :git "https://github.com/cxa/all-the-icons.el.git" :files ("*.el" "data"))
-(depends-on "nyan-mode")
 (depends-on "exec-path-from-shell")
 (depends-on "color-theme-sanityinc-tomorrow")
 (depends-on "nlinum")
